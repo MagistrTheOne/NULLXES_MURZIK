@@ -26,7 +26,11 @@ if [[ -z "${HF_TOKEN:-}" && -z "${HUGGING_FACE_HUB_TOKEN:-}" ]]; then
   exit 1
 fi
 export HUGGING_FACE_HUB_TOKEN="${HF_TOKEN:-${HUGGING_FACE_HUB_TOKEN}}"
-huggingface-cli login --token "${HUGGING_FACE_HUB_TOKEN}" --add-to-git-credential
+if command -v hf >/dev/null 2>&1; then
+  hf auth login --token "${HUGGING_FACE_HUB_TOKEN}" --add-to-git-credential
+else
+  huggingface-cli login --token "${HUGGING_FACE_HUB_TOKEN}" --add-to-git-credential
+fi
 
 echo "=== Init MURZIK-15B weights ==="
 python scripts/init_model.py \
@@ -37,7 +41,11 @@ python llamafactory_ext/register_murzik.py
 
 HF_REPO="${HF_REPO:-MagistrTheOne/murzik-15b-init}"
 echo "=== Upload to Hugging Face: ${HF_REPO} ==="
-huggingface-cli upload "${HF_REPO}" "${MODELS}/murzik-15b" . --repo-type model --private --create-repo
+if command -v hf >/dev/null 2>&1; then
+  hf upload "${HF_REPO}" "${MODELS}/murzik-15b" . --repo-type model --private --create-repo
+else
+  huggingface-cli upload "${HF_REPO}" "${MODELS}/murzik-15b" . --repo-type model --private --create-repo
+fi
 
 echo "=== Done ==="
 echo "Model local:  ${MODELS}/murzik-15b"

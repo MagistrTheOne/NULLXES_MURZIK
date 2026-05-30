@@ -78,15 +78,24 @@ def main() -> None:
         tokenizer.save_pretrained(out_dir)
         auto_map["AutoTokenizer"] = "murzik.tokenization_murzik.MurzikTokenizer"
     else:
-        # Minimal tokenizer stub for PT-only smoke tests
+        from tokenizers import Tokenizer
+        from tokenizers.models import BPE
+        from tokenizers.pre_tokenizers import ByteLevel
         from transformers import PreTrainedTokenizerFast
 
+        # Placeholder byte-level tokenizer until SPM is trained (vocab size from config).
+        backend = Tokenizer(BPE())
+        backend.pre_tokenizer = ByteLevel()
+        backend.add_special_tokens(
+            ["<|pad|>", "<|murzik|>", "<|end|>", "<|unk|>", "<|user|>", "<|assistant|>", "<|system|>"]
+        )
         tok = PreTrainedTokenizerFast(
-            tokenizer_object=None,
+            tokenizer_object=backend,
             bos_token="<|murzik|>",
             eos_token="<|end|>",
             pad_token="<|pad|>",
             unk_token="<|unk|>",
+            model_max_length=config.max_position_embeddings,
         )
         tok.save_pretrained(out_dir)
 

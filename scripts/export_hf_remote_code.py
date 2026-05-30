@@ -19,6 +19,15 @@ IMPORT_REPLACEMENTS = (
     (r"from \.modeling_murzik import", "from modeling_murzik import"),
 )
 
+MODELING_BOOTSTRAP = """import os
+import sys
+
+_sys_path = os.path.dirname(__file__)
+if _sys_path not in sys.path:
+    sys.path.insert(0, _sys_path)
+
+"""
+
 FLAT_FILES = (
     "configuration_murzik.py",
     "configuration_murzik_moe.py",
@@ -32,6 +41,14 @@ def _write_flat_file(src: Path, dst: Path) -> None:
     text = src.read_text(encoding="utf-8")
     for pattern, repl in IMPORT_REPLACEMENTS:
         text = re.sub(pattern, repl, text)
+    if src.name.startswith("modeling_"):
+        text = re.sub(
+            r'(""".*?"""\n\n)',
+            r"\1" + MODELING_BOOTSTRAP,
+            text,
+            count=1,
+            flags=re.DOTALL,
+        )
     dst.write_text(text, encoding="utf-8")
 
 

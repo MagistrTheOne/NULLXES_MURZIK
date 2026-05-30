@@ -74,8 +74,9 @@ python scripts/init_model.py \
 
 ```json
 "auto_map": {
-  "AutoConfig": "murzik.configuration_murzik.MurzikConfig",
-  "AutoModelForCausalLM": "murzik.modeling_murzik.MurzikForCausalLM"
+  "AutoConfig": "configuration_murzik.MurzikConfig",
+  "AutoModelForCausalLM": "modeling_murzik.MurzikForCausalLM",
+  "AutoTokenizer": "tokenization_murzik.MurzikTokenizer"
 }
 ```
 

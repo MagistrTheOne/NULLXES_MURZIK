@@ -19,14 +19,6 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
-def copy_modeling_code(out_dir: Path) -> None:
-    murzik_src = ROOT / "murzik"
-    out_murzik = out_dir / "murzik"
-    if out_murzik.exists():
-        shutil.rmtree(out_murzik)
-    shutil.copytree(murzik_src, out_murzik)
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True, help="Path to model config JSON")
@@ -57,54 +49,26 @@ def main() -> None:
     model = AutoModelForCausalLM.from_config(config)
     model = model.to(torch.bfloat16)
 
-    copy_modeling_code(out_dir)
     model.save_pretrained(out_dir, safe_serialization=True)
     config.save_pretrained(out_dir)
 
-    # trust_remote_code entrypoint
-    auto_map = {
-        "AutoConfig": "murzik.configuration_murzik_moe.MurzikMoeConfig"
-        if cfg_dict["model_type"] == "murzik_moe"
-        else "murzik.configuration_murzik.MurzikConfig",
-        "AutoModelForCausalLM": "murzik.modeling_murzik_moe.MurzikMoeForCausalLM"
-        if cfg_dict["model_type"] == "murzik_moe"
-        else "murzik.modeling_murzik.MurzikForCausalLM",
-    }
     if args.tokenizer:
         tok_path = Path(args.tokenizer)
         from murzik.tokenization_murzik import MurzikTokenizer
 
-        tokenizer = MurzikTokenizer(vocab_file=str(tok_path))
+        import shutil
+
+        dest = out_dir / "murzik.model"
+        shutil.copy(tok_path, dest)
+        tokenizer = MurzikTokenizer(vocab_file=str(dest))
         tokenizer.save_pretrained(out_dir)
-        auto_map["AutoTokenizer"] = "murzik.tokenization_murzik.MurzikTokenizer"
     else:
-        from tokenizers import Tokenizer
-        from tokenizers.models import BPE
-        from tokenizers.pre_tokenizers import ByteLevel
-        from transformers import PreTrainedTokenizerFast
+        print("  tokenizer: run scripts/train_murzik_spm.py --model-dir", out_dir)
 
-        # Placeholder byte-level tokenizer until SPM is trained (vocab size from config).
-        backend = Tokenizer(BPE())
-        backend.pre_tokenizer = ByteLevel()
-        backend.add_special_tokens(
-            ["<|pad|>", "<|murzik|>", "<|end|>", "<|unk|>", "<|user|>", "<|assistant|>", "<|system|>"]
-        )
-        tok = PreTrainedTokenizerFast(
-            tokenizer_object=backend,
-            bos_token="<|murzik|>",
-            eos_token="<|end|>",
-            pad_token="<|pad|>",
-            unk_token="<|unk|>",
-            model_max_length=config.max_position_embeddings,
-        )
-        tok.save_pretrained(out_dir)
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from export_hf_remote_code import export_remote_code
 
-    cfg_saved = out_dir / "config.json"
-    with open(cfg_saved, encoding="utf-8") as f:
-        saved = json.load(f)
-    saved["auto_map"] = auto_map
-    with open(cfg_saved, "w", encoding="utf-8") as f:
-        json.dump(saved, f, indent=2)
+    export_remote_code(out_dir, cfg_dict["model_type"])
 
     n_params = sum(p.numel() for p in model.parameters())
     print(f"Saved {out_dir}")

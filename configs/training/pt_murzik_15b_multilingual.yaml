@@ -1,7 +1,7 @@
-### MURZIK-15B — Multilingual Pre-training (Wikipedia + C4)
-### dataset: EN/RU/DE/ES/FR/ZH/UK wiki + C4 en/ru (parquet, no legacy scripts)
+### MURZIK-15B — Multilingual Pre-training (Wikipedia + C4 en)
+### Pilot: wiki 7 langs + c4_en (c4_ru dropped — HF cache too heavy)
 
-model_name_or_path: MagistrTheOne/murzik-15b-init
+model_name_or_path: /workspace/models/murzik-15b
 trust_remote_code: true
 
 stage: pt
@@ -9,13 +9,13 @@ do_train: true
 finetuning_type: full
 deepspeed: configs/training/ds_zero3_moe.json
 
-dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en,c4_ru
+dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
 dataset_dir: /workspace/data
 template: default
 cutoff_len: 4096
 preprocessing_num_workers: 8
-packing: true
-overwrite_cache: false
+packing: false
+overwrite_cache: true
 
 output_dir: /workspace/checkpoints/pt-15b-multilingual
 logging_steps: 10
@@ -27,9 +27,10 @@ report_to: none
 per_device_train_batch_size: 1
 gradient_accumulation_steps: 8
 learning_rate: 2.0e-4
+max_steps: 500
 num_train_epochs: 1
 lr_scheduler_type: cosine
-warmup_steps: 500
+warmup_steps: 50
 weight_decay: 0.1
 bf16: true
 gradient_checkpointing: true

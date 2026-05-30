@@ -19,6 +19,8 @@ pip install git+https://github.com/hiyouga/LlamaFactory.git -q
 
 cp -f data/dataset_info_multilingual.json /workspace/data/dataset_info.json
 
+rm -rf "${HF_HOME}/modules/transformers_modules/"*murzik* 2>/dev/null || true
+
 python scripts/export_hf_remote_code.py --model-dir "${MODEL_DIR}"
 
 if [[ ! -f "${MODEL_DIR}/murzik.model" ]]; then

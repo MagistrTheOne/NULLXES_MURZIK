@@ -3,7 +3,7 @@
 set -euo pipefail
 
 DATA="${1:-/workspace/data}"
-ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 mkdir -p "${DATA}/pt" "${DATA}/sft" "${DATA}/dpo"
 

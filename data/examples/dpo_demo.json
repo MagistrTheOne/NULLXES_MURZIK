@@ -1,0 +1,18 @@
+[
+  {
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Explain MoE in one sentence."
+      }
+    ],
+    "chosen": {
+      "from": "gpt",
+      "value": "Mixture-of-Experts activates a small subset of specialist networks per token while keeping total capacity large."
+    },
+    "rejected": {
+      "from": "gpt",
+      "value": "MoE is when you mix experts in a bowl."
+    }
+  }
+]

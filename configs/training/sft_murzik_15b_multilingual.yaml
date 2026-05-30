@@ -1,0 +1,35 @@
+### MURZIK-15B — Multilingual SFT (Aya 65 langs)
+
+model_name_or_path: /workspace/checkpoints/pt-15b-multilingual
+trust_remote_code: true
+
+stage: sft
+do_train: true
+finetuning_type: full
+deepspeed: configs/training/ds_zero3_moe.json
+
+dataset: aya_sft
+dataset_dir: /workspace/data
+template: murzik
+cutoff_len: 8192
+preprocessing_num_workers: 8
+overwrite_cache: false
+
+output_dir: /workspace/checkpoints/sft-15b-multilingual
+logging_steps: 10
+save_steps: 200
+save_total_limit: 3
+report_to: wandb
+run_name: murzik-sft-15b-multilingual
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 5.0e-6
+num_train_epochs: 2
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+gradient_checkpointing: true
+
+seed: 42

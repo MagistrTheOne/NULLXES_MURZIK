@@ -40,6 +40,7 @@ NULLXES_MURZIK/
 
 - [Architecture](docs/ARCHITECTURE.md) — MurzikMoE blocks, MoE routing, parameter math
 - [LlamaFactory setup](docs/LLAMAFACTORY_SETUP.md) — custom model, datasets, train commands
+- [Multilingual training](docs/MULTILINGUAL.md) — HF datasets (Aya, Wikipedia, mC4)
 - [Training pipeline](docs/TRAINING.md) — phases, LlamaFactory, DeepSpeed
 - [RunPod operations](docs/RUNPOD.md) — clusters, volumes, cost controls
 

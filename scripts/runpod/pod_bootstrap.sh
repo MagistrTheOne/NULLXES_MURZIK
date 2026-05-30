@@ -40,11 +40,13 @@ python scripts/init_model.py \
 python llamafactory_ext/register_murzik.py
 
 HF_REPO="${HF_REPO:-MagistrTheOne/murzik-15b-init}"
-echo "=== Upload to Hugging Face: ${HF_REPO} ==="
+echo "=== Upload to Hugging Face: ${HF_REPO} (public) ==="
 if command -v hf >/dev/null 2>&1; then
-  hf upload "${HF_REPO}" "${MODELS}/murzik-15b" . --repo-type model --create-repo
+  hf repo create "${HF_REPO}" --type model --no-private 2>/dev/null || true
+  hf upload "${HF_REPO}" "${MODELS}/murzik-15b" . --repo-type model --no-private
 else
-  huggingface-cli upload "${HF_REPO}" "${MODELS}/murzik-15b" . --repo-type model --create-repo
+  huggingface-cli repo create "${HF_REPO}" --type model 2>/dev/null || true
+  huggingface-cli upload "${HF_REPO}" "${MODELS}/murzik-15b" .
 fi
 
 echo "=== Done ==="

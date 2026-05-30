@@ -1,0 +1,44 @@
+### NULLXES MURZIK-15B — Multilingual PT (90 min session)
+### Org: NULLXES | Contact: ceo@nullxes.com
+### Base: https://huggingface.co/MagistrTheOne/murzik-15b-init
+
+model_name_or_path: MagistrTheOne/murzik-15b-init
+trust_remote_code: true
+
+stage: pt
+do_train: true
+finetuning_type: full
+deepspeed: configs/training/ds_zero3_moe.json
+
+# Start with 3 langs — expand after cache warm
+dataset: wiki_en,wiki_ru,wiki_de,mc4_en,mc4_ru
+dataset_dir: /workspace/data
+template: default
+cutoff_len: 2048
+preprocessing_num_workers: 4
+packing: true
+overwrite_cache: false
+max_samples: 20000
+
+output_dir: /workspace/checkpoints/nullxes-murzik-15b-pt
+logging_steps: 5
+save_steps: 100
+save_total_limit: 2
+plot_loss: true
+report_to: none
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 2.0e-4
+max_steps: 500
+lr_scheduler_type: cosine
+warmup_steps: 50
+weight_decay: 0.1
+bf16: true
+gradient_checkpointing: true
+ddp_timeout: 180000000
+
+# NULLXES MURZIK
+run_name: nullxes-murzik-15b-pt-multilingual
+
+seed: 42

@@ -7,6 +7,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 export PYTHONPATH="${ROOT}:${PYTHONPATH:-}"
 export HF_HOME="${HF_HOME:-/workspace/cache/huggingface}"
+export NULLXES_PROJECT="${NULLXES_PROJECT:-MURZIK}"
+export NULLXES_CONTACT="${NULLXES_CONTACT:-ceo@nullxes.com}"
 
 cd "${ROOT}"
 

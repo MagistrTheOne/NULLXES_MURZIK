@@ -1,0 +1,15 @@
+# NULLXES MURZIK — project metadata
+# Contact: ceo@nullxes.com
+
+project: NULLXES MURZIK
+organization: NULLXES
+contact: ceo@nullxes.com
+website: https://github.com/MagistrTheOne/NULLXES_MURZIK
+
+models:
+  init_15b: MagistrTheOne/murzik-15b-init
+  pt_15b_multilingual: MagistrTheOne/murzik-15b-pt-multilingual
+  sft_15b_multilingual: MagistrTheOne/murzik-15b-sft-multilingual
+
+template: murzik
+license: proprietary

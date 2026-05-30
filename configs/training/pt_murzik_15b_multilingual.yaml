@@ -1,5 +1,5 @@
 ### MURZIK-15B — Multilingual Pre-training (HF Wikipedia + mC4 mix)
-### dataset mix: EN/RU/DE/ES/FR/ZH/UK + mc4 EN/RU
+### NULLXES | ceo@nullxes.com | dataset: EN/RU/DE/ES/FR/ZH/UK + mc4 EN/RU
 
 model_name_or_path: MagistrTheOne/murzik-15b-init
 trust_remote_code: true
@@ -17,13 +17,13 @@ preprocessing_num_workers: 8
 packing: true
 overwrite_cache: false
 
-output_dir: /workspace/checkpoints/pt-15b-multilingual
+output_dir: /workspace/checkpoints/nullxes-murzik-15b-pt-full
 logging_steps: 10
 save_steps: 500
 save_total_limit: 3
 plot_loss: true
-report_to: wandb
-run_name: murzik-pt-15b-multilingual
+report_to: none
+run_name: nullxes-murzik-15b-pt-full
 
 per_device_train_batch_size: 1
 gradient_accumulation_steps: 8

@@ -1,0 +1,42 @@
+### NULLXES MURZIK-15B — Multilingual SFT (Aya 65 langs)
+### Org: NULLXES | Contact: ceo@nullxes.com
+
+model_name_or_path: /workspace/checkpoints/nullxes-murzik-15b-pt
+trust_remote_code: true
+
+stage: sft
+do_train: true
+finetuning_type: full
+deepspeed: configs/training/ds_zero3_moe.json
+
+dataset: aya_sft
+dataset_dir: /workspace/data
+template: murzik
+cutoff_len: 4096
+preprocessing_num_workers: 4
+overwrite_cache: false
+
+output_dir: /workspace/checkpoints/nullxes-murzik-15b-sft
+logging_steps: 10
+save_steps: 200
+save_total_limit: 2
+plot_loss: true
+report_to: none
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 5.0e-6
+max_steps: 1000
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+weight_decay: 0.01
+bf16: true
+gradient_checkpointing: true
+
+run_name: nullxes-murzik-15b-sft-multilingual
+
+# Push after SFT (optional — set HF_TOKEN on pod)
+# push_to_hub: true
+# hub_model_id: MagistrTheOne/murzik-15b-sft-multilingual
+
+seed: 42

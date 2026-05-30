@@ -1,0 +1,28 @@
+# Data and checkpoints (live on RunPod Volume)
+data/
+checkpoints/
+cache/
+logs/
+*.jsonl
+*.bin
+*.safetensors
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# W&B
+wandb/

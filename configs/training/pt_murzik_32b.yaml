@@ -1,0 +1,51 @@
+### NULLXES MURZIK-32B — Pre-training (LlamaFactory)
+### Requires: murzik_moe registered in LlamaFactory + Transformers
+
+### model
+model_name_or_path: configs/model/murzik_32b.json
+trust_remote_code: true
+
+### method
+stage: pt
+do_train: true
+finetuning_type: full
+deepspeed: configs/training/ds_zero3_moe.json
+
+### dataset
+dataset: murzik_pt
+dataset_dir: /workspace/data/pt
+template: default
+cutoff_len: 4096
+preprocessing_num_workers: 16
+packing: true
+
+### output
+output_dir: /workspace/checkpoints/pt-32b
+logging_steps: 10
+save_steps: 500
+save_total_limit: 3
+plot_loss: true
+report_to: wandb
+run_name: murzik-pt-32b
+
+### train
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 3.0e-4
+num_train_epochs: 1
+lr_scheduler_type: cosine
+warmup_steps: 2000
+weight_decay: 0.1
+adam_beta1: 0.9
+adam_beta2: 0.95
+max_grad_norm: 1.0
+bf16: true
+gradient_checkpointing: true
+ddp_timeout: 180000000
+
+### moe
+moe_aux_loss_coef: 0.001
+
+### misc
+seed: 42
+ddp_find_unused_parameters: false

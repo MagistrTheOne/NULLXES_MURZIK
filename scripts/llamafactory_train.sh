@@ -14,4 +14,5 @@ echo "=== Register Murzik in LlamaFactory ==="
 python llamafactory_ext/register_murzik.py
 
 echo "=== Train: ${CONFIG} ==="
+export FORCE_TORCHRUN=1
 llamafactory-cli train "${CONFIG}"

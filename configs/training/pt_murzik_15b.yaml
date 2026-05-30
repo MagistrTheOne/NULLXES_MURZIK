@@ -1,0 +1,41 @@
+### MURZIK-15B — Pre-training (production)
+### Requires: /workspace/data/pt/murzik_pt.jsonl
+
+model_name_or_path: /workspace/models/murzik-15b
+trust_remote_code: true
+
+stage: pt
+do_train: true
+finetuning_type: full
+deepspeed: configs/training/ds_zero3_moe.json
+
+dataset: murzik_pt
+dataset_dir: /workspace/data
+template: default
+cutoff_len: 4096
+preprocessing_num_workers: 8
+packing: true
+
+output_dir: /workspace/checkpoints/pt-15b
+logging_steps: 10
+save_steps: 500
+save_total_limit: 3
+plot_loss: true
+report_to: wandb
+run_name: murzik-pt-15b
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 3.0e-4
+num_train_epochs: 1
+lr_scheduler_type: cosine
+warmup_steps: 500
+weight_decay: 0.1
+adam_beta1: 0.9
+adam_beta2: 0.95
+max_grad_norm: 1.0
+bf16: true
+gradient_checkpointing: true
+ddp_timeout: 180000000
+
+seed: 42

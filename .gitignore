@@ -1,5 +1,7 @@
 # Data and checkpoints (live on RunPod Volume)
-data/
+data/*
+!data/dataset_info.json
+!data/examples/
 checkpoints/
 cache/
 logs/

@@ -1,0 +1,39 @@
+{
+  "murzik_pt": {
+    "file_name": "pt/murzik_pt.jsonl",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "murzik_sft": {
+    "file_name": "sft/murzik_sft.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "system": "system"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt",
+      "system_tag": "system"
+    }
+  },
+  "murzik_dpo": {
+    "file_name": "dpo/murzik_dpo.json",
+    "ranking": true,
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "chosen": "chosen",
+      "rejected": "rejected"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  }
+}

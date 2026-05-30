@@ -9,7 +9,7 @@ finetuning_type: full
 deepspeed: configs/training/ds_zero3_moe.json
 
 dataset: murzik_dpo
-dataset_dir: /workspace/data/dpo
+dataset_dir: /workspace/data
 template: murzik
 cutoff_len: 8192
 

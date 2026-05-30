@@ -2,7 +2,7 @@
 ### Requires: murzik_moe registered in LlamaFactory + Transformers
 
 ### model
-model_name_or_path: configs/model/murzik_32b.json
+model_name_or_path: /workspace/models/murzik-32b-moe
 trust_remote_code: true
 
 ### method
@@ -13,7 +13,7 @@ deepspeed: configs/training/ds_zero3_moe.json
 
 ### dataset
 dataset: murzik_pt
-dataset_dir: /workspace/data/pt
+dataset_dir: /workspace/data
 template: default
 cutoff_len: 4096
 preprocessing_num_workers: 16

@@ -1,0 +1,27 @@
+### MURZIK 15B pilot — SFT smoke test
+
+model_name_or_path: /workspace/checkpoints/pt-15b-pilot
+trust_remote_code: true
+
+stage: sft
+do_train: true
+finetuning_type: full
+
+dataset: murzik_sft_demo
+dataset_dir: /workspace/data
+template: murzik
+cutoff_len: 4096
+
+output_dir: /workspace/checkpoints/sft-15b-pilot
+logging_steps: 5
+save_steps: 50
+report_to: none
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 2
+learning_rate: 1.0e-5
+max_steps: 50
+bf16: true
+gradient_checkpointing: true
+
+seed: 42

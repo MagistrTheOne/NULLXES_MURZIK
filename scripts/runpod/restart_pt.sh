@@ -27,6 +27,18 @@ if [[ ! -f "${MODEL_DIR}/murzik.model" ]]; then
 else
   echo "=== Reuse existing Murzik SPM: ${MODEL_DIR}/murzik.model ==="
   python scripts/export_hf_remote_code.py --model-dir "${MODEL_DIR}"
+  python - <<'PY'
+import sys
+from pathlib import Path
+
+model_dir = Path("/workspace/models/murzik-15b")
+sys.path.insert(0, "/workspace/NULLXES_MURZIK")
+from murzik.tokenization_murzik import MurzikTokenizer
+
+tok = MurzikTokenizer(vocab_file=str(model_dir / "murzik.model"))
+tok.save_pretrained(model_dir)
+print("[restart_pt] MurzikTokenizer saved")
+PY
 fi
 
 echo "=== Train: ${CONFIG} ==="

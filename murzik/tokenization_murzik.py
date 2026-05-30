@@ -84,7 +84,8 @@ class MurzikTokenizer(PreTrainedTokenizer):
 
     def save_vocabulary(self, save_directory: str, filename_prefix: Optional[str] = None) -> tuple[str]:
         out = Path(save_directory) / f"{filename_prefix or ''}murzik.model"
-        if self.vocab_file:
+        if self.vocab_file and Path(self.vocab_file).resolve() != out.resolve():
             import shutil
+
             shutil.copy(self.vocab_file, out)
         return (str(out),)

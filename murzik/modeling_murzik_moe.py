@@ -178,7 +178,7 @@ class MurzikMoeModel(MurzikMoePreTrainedModel):
 
 
 class MurzikMoeForCausalLM(MurzikMoePreTrainedModel):
-    _tied_weights_keys = ["lm_head.weight"]
+    _tied_weights_keys = {"lm_head.weight": "model.embed_tokens.weight"}
 
     def __init__(self, config: MurzikMoeConfig):
         super().__init__(config)

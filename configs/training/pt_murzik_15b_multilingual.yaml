@@ -1,5 +1,5 @@
-### MURZIK-15B — Multilingual Pre-training (HF Wikipedia + mC4 mix)
-### dataset mix: EN/RU/DE/ES/FR/ZH/UK + mc4 EN/RU
+### MURZIK-15B — Multilingual Pre-training (Wikipedia + C4)
+### dataset: EN/RU/DE/ES/FR/ZH/UK wiki + C4 en/ru (parquet, no legacy scripts)
 
 model_name_or_path: MagistrTheOne/murzik-15b-init
 trust_remote_code: true
@@ -9,7 +9,7 @@ do_train: true
 finetuning_type: full
 deepspeed: configs/training/ds_zero3_moe.json
 
-dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,mc4_en,mc4_ru
+dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en,c4_ru
 dataset_dir: /workspace/data
 template: default
 cutoff_len: 4096

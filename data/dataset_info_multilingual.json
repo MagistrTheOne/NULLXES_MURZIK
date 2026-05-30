@@ -54,19 +54,19 @@
     "num_samples": 20000
   },
 
-  "mc4_en": {
-    "hf_hub_url": "mc4",
+  "c4_en": {
+    "hf_hub_url": "allenai/c4",
     "subset": "en",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 100000
+    "num_samples": 50000
   },
-  "mc4_ru": {
-    "hf_hub_url": "mc4",
+  "c4_ru": {
+    "hf_hub_url": "allenai/c4",
     "subset": "ru",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 100000
+    "num_samples": 50000
   },
 
   "murzik_pt_multilingual": {

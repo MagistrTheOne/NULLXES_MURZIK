@@ -15,9 +15,10 @@ template: default
 cutoff_len: 4096
 preprocessing_num_workers: 8
 packing: false
-overwrite_cache: true
+overwrite_cache: false
 
-flash_attn: fa2
+# SDPA (PyTorch) — FA2 not wired in Murzik yet; attention uses scaled_dot_product_attention
+flash_attn: sdpa
 
 output_dir: /workspace/checkpoints/pt-15b-multilingual
 logging_steps: 10

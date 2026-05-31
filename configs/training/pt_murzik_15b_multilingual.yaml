@@ -7,14 +7,14 @@ trust_remote_code: true
 stage: pt
 do_train: true
 finetuning_type: full
-# ZeRO-2 + CPU optimizer offload: params stay on GPU (~25GB), Adam states on CPU (~100GB)
-deepspeed: configs/training/ds_zero2_offload.json
+# pure_bf16 avoids fp32 weight upcast (~50GB VRAM). ZeRO-3, no CPU offload.
+deepspeed: configs/training/ds_zero3_moe.json
 
 dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
 dataset_dir: /workspace/data
 template: default
 cutoff_len: 2048
-preprocessing_num_workers: 8
+preprocessing_num_workers: 4
 packing: false
 overwrite_cache: false
 
@@ -36,6 +36,7 @@ lr_scheduler_type: cosine
 warmup_steps: 50
 weight_decay: 0.1
 bf16: true
+pure_bf16: true
 gradient_checkpointing: true
 ddp_timeout: 180000000
 

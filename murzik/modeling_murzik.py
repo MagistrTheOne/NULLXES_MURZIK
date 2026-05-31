@@ -13,9 +13,25 @@ from transformers.generation.utils import GenerationMixin
 from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.utils import logging
 
+try:
+    from transformers.cache_utils import Cache
+except ImportError:
+    Cache = tuple()  # type: ignore[misc, assignment]
+
 from .configuration_murzik import MurzikConfig
 
 logger = logging.get_logger(__name__)
+
+
+def _past_for_layer(past_key_values, layer_idx: int):
+    if past_key_values is None:
+        return None
+    if isinstance(past_key_values, Cache) or hasattr(past_key_values, "get_seq_length"):
+        if past_key_values.get_seq_length() == 0:
+            return None
+        legacy = past_key_values.to_legacy_cache()
+        return legacy[layer_idx] if layer_idx < len(legacy) else None
+    return past_key_values[layer_idx]
 
 
 class MurzikRMSNorm(nn.Module):
@@ -217,7 +233,7 @@ class MurzikModel(MurzikPreTrainedModel):
 
         presents = [] if use_cache else None
         for idx, layer in enumerate(self.layers):
-            past = past_key_values[idx] if past_key_values is not None else None
+            past = _past_for_layer(past_key_values, idx)
             if self.gradient_checkpointing and self.training:
                 hidden_states, present = self._checkpoint_layer(
                     layer, hidden_states, attention_mask, position_embeddings, past, use_cache

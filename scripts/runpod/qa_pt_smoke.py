@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import shutil
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -50,6 +51,12 @@ def main() -> None:
         else:
             raise SystemExit(f"No config.json in {args.checkpoint}")
 
+    for fname in ("modeling_murzik.py", "configuration_murzik.py"):
+        src = ROOT / "murzik" / fname
+        dst = ckpt / fname
+        if src.is_file():
+            shutil.copy2(src, dst)
+
     print(f"=== Murzik PT smoke QA ===")
     print(f"time: {datetime.now(timezone.utc).isoformat()}")
     print(f"checkpoint: {ckpt}")
@@ -74,6 +81,7 @@ def main() -> None:
                 temperature=args.temperature,
                 top_p=0.9,
                 pad_token_id=tokenizer.eos_token_id,
+                use_cache=False,
             )
         text = tokenizer.decode(out[0], skip_special_tokens=True)
         continuation = text[len(prompt) :] if text.startswith(prompt) else text

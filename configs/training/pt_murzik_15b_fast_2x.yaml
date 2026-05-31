@@ -1,0 +1,40 @@
+### MURZIK-15B — Fast PT (2× H200, ~1.5h budget): identity + wiki only, NO c4
+### c4_en removed: allenai/c4 generates 365M row split (~360GB, 30+ min)
+
+model_name_or_path: /workspace/models/murzik-15b
+trust_remote_code: true
+
+stage: pt
+do_train: true
+finetuning_type: full
+
+dataset: murzik_identity,wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk
+dataset_dir: /workspace/data
+template: default
+cutoff_len: 2048
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+packing: false
+overwrite_cache: false
+
+output_dir: /workspace/checkpoints/pt-15b-multilingual-2x
+logging_steps: 10
+save_steps: 1500
+save_total_limit: 1
+plot_loss: true
+report_to: none
+
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 4
+learning_rate: 1.0e-4
+max_steps: 1500
+lr_scheduler_type: cosine
+warmup_steps: 50
+weight_decay: 0.1
+optim: adamw_bnb_8bit
+bf16: true
+pure_bf16: true
+gradient_checkpointing: true
+ddp_timeout: 180000000
+
+seed: 42

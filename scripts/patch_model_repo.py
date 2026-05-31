@@ -64,7 +64,7 @@ def main() -> None:
 
     print(f"Patched {model_dir}")
     print(f"  auto_map: module.Class (Transformers 5.x)")
-    print(f"  tokenizer: murzik.model ({tokenizer.vocab_size} pieces)")
+    print(f"  tokenizer: murzik.model ({tokenizer.vocab_size} pieces, len={len(tokenizer)})")
 
 
 if __name__ == "__main__":

@@ -76,17 +76,34 @@ class MurzikTokenizer(PreTrainedTokenizer):
         if self.sp_model.get_piece_size() == 0:
             raise ValueError(f"MurzikTokenizer: missing or empty SentencePiece model ({vocab_file})")
         kwargs.setdefault("chat_template", MURZIK_CHAT_TEMPLATE)
+        # Role tokens are user_defined_symbols inside SPM — do not register them as HF
+        # added_tokens (that would assign ids >= vocab_size and break embedding lookup).
         super().__init__(
             bos_token=bos_token,
             eos_token=eos_token,
             pad_token=pad_token,
             unk_token=unk_token,
-            additional_special_tokens=SPECIAL_TOKENS["additional_special_tokens"],
             **kwargs,
         )
+        self._bind_special_token_ids_from_spm()
+
+    def _spm_id(self, token: str) -> int:
+        idx = self.sp_model.piece_to_id(token)
+        if idx == self.sp_model.unk_id():
+            raise ValueError(f"Special token {token!r} missing from SentencePiece model")
+        return idx
+
+    def _bind_special_token_ids_from_spm(self) -> None:
+        self.pad_token_id = self._spm_id(self.pad_token)
+        self.bos_token_id = self._spm_id(self.bos_token)
+        self.eos_token_id = self._spm_id(self.eos_token)
+        self.unk_token_id = self._spm_id(self.unk_token)
 
     @property
     def vocab_size(self) -> int:
+        return self.sp_model.get_piece_size()
+
+    def __len__(self) -> int:
         return self.sp_model.get_piece_size()
 
     def get_vocab(self):
@@ -99,7 +116,16 @@ class MurzikTokenizer(PreTrainedTokenizer):
         return self.sp_model.piece_to_id(token)
 
     def _convert_id_to_token(self, index: int) -> str:
+        if index < 0 or index >= self.sp_model.get_piece_size():
+            raise IndexError(f"Token id {index} out of SPM range")
         return self.sp_model.id_to_piece(index)
+
+    def encode_murzik_prompt(self, system: str, user: str, assistant: str | None = None) -> list[int]:
+        """Build the exact LlamaFactory `murzik` template token ids."""
+        text = f"<|murzik|><|system|>\n{system}<|end|>\n<|user|>\n{user}<|end|>\n<|assistant|>\n"
+        if assistant is not None:
+            text += f"{assistant}<|end|>"
+        return self.encode(text, add_special_tokens=False)
 
     def convert_tokens_to_string(self, tokens: list[str]) -> str:
         return self.sp_model.decode(tokens)

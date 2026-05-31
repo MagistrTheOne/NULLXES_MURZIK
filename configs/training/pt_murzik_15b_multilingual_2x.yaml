@@ -1,7 +1,7 @@
 ### MURZIK-15B — Multilingual PT on 2× H200 (identity + sampled wiki + c4_en)
 ### Requires: HF_TOKEN, bitsandbytes, volume at /workspace
 
-model_name_or_path: /workspace/checkpoints/pt-15b-multilingual
+model_name_or_path: /workspace/models/murzik-15b
 trust_remote_code: true
 
 stage: pt

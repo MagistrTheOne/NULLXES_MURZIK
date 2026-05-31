@@ -3,10 +3,12 @@ data/*
 !data/dataset_info.json
 !data/dataset_info_multilingual.json
 !data/examples/
+!data/examples/**
 checkpoints/
 cache/
 logs/
 *.jsonl
+!data/examples/**
 *.bin
 *.safetensors
 

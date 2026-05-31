@@ -8,7 +8,7 @@ stage: pt
 do_train: true
 finetuning_type: full
 
-dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
+dataset: murzik_identity,wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
 dataset_dir: /workspace/data
 template: default
 cutoff_len: 1024

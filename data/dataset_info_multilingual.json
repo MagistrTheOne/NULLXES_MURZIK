@@ -1,4 +1,8 @@
 {
+  "murzik_identity": {
+    "file_name": "pt/murzik_identity.jsonl",
+    "columns": { "prompt": "text" }
+  },
   "murzik_pt": {
     "file_name": "pt/murzik_pt.jsonl",
     "columns": { "prompt": "text" }
@@ -9,49 +13,49 @@
     "subset": "20231101.en",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 50000
+    "num_samples": 15000
   },
   "wiki_ru": {
     "hf_hub_url": "wikimedia/wikipedia",
     "subset": "20231101.ru",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 50000
+    "num_samples": 12000
   },
   "wiki_de": {
     "hf_hub_url": "wikimedia/wikipedia",
     "subset": "20231101.de",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 30000
+    "num_samples": 8000
   },
   "wiki_es": {
     "hf_hub_url": "wikimedia/wikipedia",
     "subset": "20231101.es",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 30000
+    "num_samples": 8000
   },
   "wiki_fr": {
     "hf_hub_url": "wikimedia/wikipedia",
     "subset": "20231101.fr",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 30000
+    "num_samples": 8000
   },
   "wiki_zh": {
     "hf_hub_url": "wikimedia/wikipedia",
     "subset": "20231101.zh",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 30000
+    "num_samples": 8000
   },
   "wiki_uk": {
     "hf_hub_url": "wikimedia/wikipedia",
     "subset": "20231101.uk",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 20000
+    "num_samples": 4000
   },
 
   "c4_en": {
@@ -59,7 +63,7 @@
     "subset": "en",
     "split": "train",
     "columns": { "prompt": "text" },
-    "num_samples": 50000
+    "num_samples": 15000
   },
 
   "murzik_pt_multilingual": {

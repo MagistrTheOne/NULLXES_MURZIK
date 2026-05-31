@@ -5,10 +5,11 @@ from __future__ import annotations
 
 import argparse
 import shutil
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+import sentencepiece as spm
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -53,20 +54,18 @@ def train_spm(corpus_path: Path, prefix: Path, vocab_size: int) -> None:
         SPECIAL_TOKENS["eos_token"],
         SPECIAL_TOKENS["unk_token"],
     ]
-    cmd = [
-        "spm_train",
-        f"--input={corpus_path}",
-        f"--model_prefix={prefix}",
-        f"--vocab_size={vocab_size}",
-        "--model_type=bpe",
-        "--character_coverage=0.9995",
-        "--byte_fallback=true",
-        "--hard_vocab_limit=false",
-        f"--user_defined_symbols={','.join(symbols)}",
-        "--num_threads=16",
-    ]
-    print("[tokenizer] running:", " ".join(cmd))
-    subprocess.run(cmd, check=True)
+    spm.SentencePieceTrainer.train(
+        input=str(corpus_path),
+        model_prefix=str(prefix),
+        vocab_size=vocab_size,
+        model_type="bpe",
+        character_coverage=0.9995,
+        byte_fallback=True,
+        hard_vocab_limit=False,
+        user_defined_symbols=",".join(symbols),
+        num_threads=16,
+    )
+    print(f"[tokenizer] trained {prefix}.model")
 
 
 def main() -> None:

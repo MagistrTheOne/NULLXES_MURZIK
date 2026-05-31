@@ -5,6 +5,7 @@ set -euo pipefail
 export HF_HOME="${HF_HOME:-/workspace/cache/huggingface}"
 export PYTHONPATH="/workspace/NULLXES_MURZIK:${PYTHONPATH:-}"
 export FORCE_TORCHRUN=1
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
 ROOT=/workspace/NULLXES_MURZIK
 MODEL_DIR="${MODEL_DIR:-/workspace/models/murzik-15b}"

@@ -9,6 +9,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 from transformers import PreTrainedModel
+from transformers.generation import GenerationConfig
 from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.utils import logging
 
@@ -233,6 +234,7 @@ class MurzikForCausalLM(MurzikPreTrainedModel):
         self.model = MurzikModel(config)
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
         self.post_init()
+        self.generation_config = GenerationConfig.from_model_config(config)
 
     def get_input_embeddings(self):
         return self.model.embed_tokens

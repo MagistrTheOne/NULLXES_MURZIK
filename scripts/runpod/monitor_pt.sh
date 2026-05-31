@@ -10,6 +10,9 @@ MAX_WAIT="${MAX_WAIT:-900}"
 cd "${ROOT}"
 git pull --ff-only || true
 
+echo "=== $(date -Is) install bitsandbytes if missing ==="
+python -c "import bitsandbytes" 2>/dev/null || pip install -q -U bitsandbytes
+
 pkill -f 'torchrun.*pt_murzik_15b_multilingual' 2>/dev/null || true
 sleep 3
 

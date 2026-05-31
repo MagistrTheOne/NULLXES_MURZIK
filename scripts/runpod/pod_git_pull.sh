@@ -10,7 +10,10 @@ else
   git stash push -u -m "pod-auto-stash $(date -u +%Y%m%dT%H%M%SZ)" || true
 fi
 # Drop untracked files that also exist upstream (common on pods).
-for f in configs/training/sft_murzik_15b_identity_smoke.yaml; do
+for f in \
+  configs/training/sft_murzik_15b_identity_smoke.yaml \
+  configs/training/sft_murzik_15b_identity_hard.yaml
+do
   if [[ -f "$f" ]] && git ls-tree -r origin/main --name-only | grep -qx "$f"; then
     rm -f "$f"
   fi

@@ -19,6 +19,27 @@ SPECIAL_TOKENS = {
     ],
 }
 
+# Must match llamafactory_ext/register_murzik.py (LlamaFactory template "murzik").
+MURZIK_CHAT_TEMPLATE = (
+    "{%- if messages[0]['role'] == 'system' -%}"
+    "{{ '<|murzik|><|system|>\\n' + messages[0]['content'] + '<|end|>\\n' }}"
+    "{%- set loop_messages = messages[1:] -%}"
+    "{%- else -%}"
+    "{{ '<|murzik|>' }}"
+    "{%- set loop_messages = messages -%}"
+    "{%- endif -%}"
+    "{%- for message in loop_messages -%}"
+    "{%- if message['role'] == 'user' -%}"
+    "{{ '<|user|>\\n' + message['content'] + '<|end|>\\n' }}"
+    "{%- elif message['role'] == 'assistant' -%}"
+    "{{ '<|assistant|>\\n' + message['content'] + '<|end|>' }}"
+    "{%- endif -%}"
+    "{%- endfor -%}"
+    "{%- if add_generation_prompt -%}"
+    "{{ '<|assistant|>\\n' }}"
+    "{%- endif -%}"
+)
+
 
 class MurzikTokenizer(PreTrainedTokenizer):
     vocab_files_names = {"vocab_file": "murzik.model"}
@@ -54,11 +75,13 @@ class MurzikTokenizer(PreTrainedTokenizer):
             self.sp_model.Load(self.vocab_file)
         if self.sp_model.get_piece_size() == 0:
             raise ValueError(f"MurzikTokenizer: missing or empty SentencePiece model ({vocab_file})")
+        kwargs.setdefault("chat_template", MURZIK_CHAT_TEMPLATE)
         super().__init__(
             bos_token=bos_token,
             eos_token=eos_token,
             pad_token=pad_token,
             unk_token=unk_token,
+            additional_special_tokens=SPECIAL_TOKENS["additional_special_tokens"],
             **kwargs,
         )
 

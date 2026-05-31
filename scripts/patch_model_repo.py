@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from murzik.tokenization_murzik import MURZIK_CHAT_TEMPLATE, MurzikTokenizer  # noqa: E402
 from scripts.murzik_hf_export import auto_map_for, export_murzik_code  # noqa: E402
 
 
@@ -38,8 +39,6 @@ def main() -> None:
     with cfg_path.open("w", encoding="utf-8") as f:
         json.dump(cfg, f, indent=2)
 
-    from murzik.tokenization_murzik import MurzikTokenizer
-
     tokenizer = MurzikTokenizer(vocab_file=str(tok_path))
     tokenizer.save_pretrained(model_dir)
 
@@ -50,12 +49,14 @@ def main() -> None:
     tok_cfg["tokenizer_class"] = "MurzikTokenizer"
     tok_cfg["vocab_file"] = "murzik.model"
     tok_cfg["use_fast"] = False
+    tok_cfg["chat_template"] = MURZIK_CHAT_TEMPLATE
     with tok_cfg_path.open("w", encoding="utf-8") as f:
         json.dump(tok_cfg, f, indent=2)
 
-    fast_tok = model_dir / "tokenizer.json"
-    if fast_tok.is_file():
-        fast_tok.unlink()
+    for stale in ("tokenizer.json", "chat_template.jinja"):
+        path = model_dir / stale
+        if path.is_file():
+            path.unlink()
 
     sample = tokenizer.encode("Murzik multilingual pre-training.", add_special_tokens=False)
     if len(sample) < 2:

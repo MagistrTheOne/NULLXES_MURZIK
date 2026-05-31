@@ -1,0 +1,66 @@
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 50 billion tokens needs roughly 381,469 steps at that throughput."}
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 100 billion tokens needs roughly 762,939 steps at that throughput."}
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 200 billion tokens needs roughly 1,525,878 steps at that throughput."}
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 500 billion tokens needs roughly 3,814,697 steps at that throughput."}
+{"text": "Checklist before SFT: loss below ln(vocab), smooth curve over 10k steps, grammatical completions in EN and RU."}
+{"text": "Checklist before deploy: identity SFT pass, tool schema compliance, no NaN in export, model card updated."}
+{"text": "Identity upsampling: repeat branding shard fifty times in builder but cap total share near five percent."}
+{"text": "Initializer std 0.006 reduces early activation spikes versus default 0.02 on deep decoders."}
+{"text": "Problem 1: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 2: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 3: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 4: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 5: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 6: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 7: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 8: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 9: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 10: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 11: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 12: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 13: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 14: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 15: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 16: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 17: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 18: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 19: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 20: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 21: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 22: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 23: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 24: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Problem 25: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents."}
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 50 billion tokens needs roughly 381,469 steps at that throughput. [variant 1]"}
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 100 billion tokens needs roughly 762,939 steps at that throughput. [variant 1]"}
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 200 billion tokens needs roughly 1,525,878 steps at that throughput. [variant 1]"}
+{"text": "Estimate: Murzik-15B on 2× H200 with batch 2, accumulation 8, sequence 4096 yields about 131072 tokens per optimizer step. Reaching 500 billion tokens needs roughly 3,814,697 steps at that throughput. [variant 1]"}
+{"text": "Checklist before SFT: loss below ln(vocab), smooth curve over 10k steps, grammatical completions in EN and RU. [variant 1]"}
+{"text": "Checklist before deploy: identity SFT pass, tool schema compliance, no NaN in export, model card updated. [variant 1]"}
+{"text": "Identity upsampling: repeat branding shard fifty times in builder but cap total share near five percent. [variant 1]"}
+{"text": "Initializer std 0.006 reduces early activation spikes versus default 0.02 on deep decoders. [variant 1]"}
+{"text": "Problem 1: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 2: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 3: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 4: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 5: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 6: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 7: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 8: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 9: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 10: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 11: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 12: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 13: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 14: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 15: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 16: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 17: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 18: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 19: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 20: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 21: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 22: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 23: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 24: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}
+{"text": "Problem 25: diagnose plateauing loss. Verify data duplication rate, learning rate warmup, gradient norm spikes, and tokenizer unk rate on held-out NULLXES documents. [variant 1]"}

@@ -27,13 +27,12 @@ Start with **MURZIK-15B dense** (foundation → SFT), then scale to **MURZIK-32B
 First PT run on HF Wikipedia was a **stack smoke test** (~49M tokens) — not deployable. See [docs/FOUNDATION_PT.md](docs/FOUNDATION_PT.md).
 
 ```bash
-# On RunPod volume
-python scripts/build_foundation_corpus.py --out-dir /workspace/data --copy-examples
-python scripts/validate_pt_readiness.py --data-dir /workspace/data
+# On RunPod 2× H200 — one command
 bash scripts/runpod/bootstrap_foundation_pt.sh
 ```
 
-Example corpus format: `data/examples/nullxes_*.jsonl`. Replace with NULLXES-owned shards under `/workspace/data/pt/shards/`.
+Corpus base: [`data/pt/shards/`](data/pt/README.md) (~660 docs, customizable).  
+Manifests: `foundation_manifest_language_core.json` (stage 1) → `foundation_manifest.json` (stage 2).
 
 ## Repository layout
 

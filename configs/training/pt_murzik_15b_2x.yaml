@@ -1,0 +1,46 @@
+### MURZIK-15B — NULLXES PT on 2× H200 (default RunPod pod)
+### Stage 1: language core manifest. Stage 2: pt_murzik_15b_foundation.yaml + full manifest.
+###
+### Bootstrap:
+###   bash scripts/runpod/bootstrap_foundation_pt.sh configs/training/pt_murzik_15b_2x.yaml
+
+model_name_or_path: /workspace/models/murzik-15b
+trust_remote_code: true
+
+stage: pt
+do_train: true
+finetuning_type: full
+
+dataset: murzik_pt
+dataset_dir: /workspace/data
+template: default
+cutoff_len: 4096
+preprocessing_num_workers: 4
+dataloader_num_workers: 4
+packing: true
+overwrite_cache: false
+
+output_dir: /workspace/checkpoints/pt-15b-2x
+logging_steps: 10
+save_steps: 500
+save_total_limit: 3
+plot_loss: true
+report_to: none
+
+# 2× H200: 2 gpu × batch 2 × accum 8 × seq 4096 ≈ 131k tokens/step
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 8
+learning_rate: 2.0e-4
+num_train_epochs: 3
+lr_scheduler_type: cosine
+warmup_ratio: 0.01
+weight_decay: 0.1
+adam_beta1: 0.9
+adam_beta2: 0.95
+max_grad_norm: 1.0
+optim: adamw_torch
+bf16: true
+gradient_checkpointing: true
+ddp_timeout: 180000000
+
+seed: 42

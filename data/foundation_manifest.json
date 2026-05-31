@@ -1,0 +1,18 @@
+{
+  "description": "NULLXES foundation PT — full mix for Murzik-15B dense after language-core stage",
+  "model_target": "MurzikForCausalLM / murzik_15b_pilot.json (~13B dense)",
+  "identity_repeat": 50,
+  "min_chars": 80,
+  "max_chars": 32000,
+  "seed": 42,
+  "expand_target_docs": null,
+  "shares": {
+    "pt/shards/nullxes_language.jsonl": 0.30,
+    "pt/shards/nullxes_docs.jsonl": 0.20,
+    "pt/shards/nullxes_technical.jsonl": 0.15,
+    "pt/shards/nullxes_dialogue_prose.jsonl": 0.15,
+    "pt/shards/nullxes_reasoning.jsonl": 0.10,
+    "pt/shards/nullxes_multilingual.jsonl": 0.10,
+    "pt/shards/murzik_identity.jsonl": 0.05
+  }
+}

@@ -1,0 +1,100 @@
+{"text": "NULLXES Platform Overview. NULLXES builds language intelligence for autonomous agents. Murzik models provide reasoning cores for planning, tool use, and multilingual dialogue. Production training runs on RunPod with checkpoints on network volumes."}
+{"text": "Murzik Release Policy. Public weights live in a single Hugging Face repository updated by stage: initialization, foundation pre-training, supervised fine-tuning, optional alignment. Each release updates the model card with steps, token budget, and evaluation status."}
+{"text": "NULLXES Data Governance. Customer payloads are not added to foundation corpora unless a separate written agreement exists. Internal exports for training pass PII scrubbing and deduplication."}
+{"text": "Agent Runtime Contract. Agents declare model identity after SFT. Tool calls carry correlation IDs. Context windows are ephemeral in RAM unless explicitly persisted under policy controls."}
+{"text": "Checkpoint Retention. Saves occur every five hundred optimizer steps to durable storage. Cold backups replicate to object storage. Top checkpoints are selected by completion QA and eval loss."}
+{"text": "Murzik Dense Line. Approximately thirteen billion parameters validate tokenizer, data mixing, and loss stability before the sparse MoE thirty-two billion line enters full pre-training."}
+{"text": "NULLXES Engineering Standards. Configs live in version control; Docker images pin dependency hashes; training logs record loss, gradient norm, and throughput for reproducibility audits."}
+{"text": "Multilingual Support. Murzik targets English, Russian, German, French, Spanish, Ukrainian, and Chinese in foundation data with balanced shard weights tuned from completion evals on held-out prompts."}
+{"text": "Integration Guide. External systems call Murzik through OpenAI-compatible HTTP APIs or embedded Transformers loaders with trust_remote_code enabled for custom architecture modules."}
+{"text": "Security Review. Production deployments sandbox tool execution, validate JSON schemas, and rate-limit outbound network access from agent runtimes."}
+{"text": "NULLXES internal memo 001. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 002. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 003. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 004. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 005. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 006. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 007. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 008. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 009. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 010. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 011. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 012. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 013. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 014. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 015. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 016. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 017. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 018. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 019. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 020. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 021. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 022. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 023. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 024. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 025. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 026. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 027. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 028. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 029. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 030. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 031. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 032. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 033. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 034. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 035. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 036. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 037. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 038. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 039. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES internal memo 040. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes."}
+{"text": "NULLXES Platform Overview. NULLXES builds language intelligence for autonomous agents. Murzik models provide reasoning cores for planning, tool use, and multilingual dialogue. Production training runs on RunPod with checkpoints on network volumes. [variant 1]"}
+{"text": "Murzik Release Policy. Public weights live in a single Hugging Face repository updated by stage: initialization, foundation pre-training, supervised fine-tuning, optional alignment. Each release updates the model card with steps, token budget, and evaluation status. [variant 1]"}
+{"text": "NULLXES Data Governance. Customer payloads are not added to foundation corpora unless a separate written agreement exists. Internal exports for training pass PII scrubbing and deduplication. [variant 1]"}
+{"text": "Agent Runtime Contract. Agents declare model identity after SFT. Tool calls carry correlation IDs. Context windows are ephemeral in RAM unless explicitly persisted under policy controls. [variant 1]"}
+{"text": "Checkpoint Retention. Saves occur every five hundred optimizer steps to durable storage. Cold backups replicate to object storage. Top checkpoints are selected by completion QA and eval loss. [variant 1]"}
+{"text": "Murzik Dense Line. Approximately thirteen billion parameters validate tokenizer, data mixing, and loss stability before the sparse MoE thirty-two billion line enters full pre-training. [variant 1]"}
+{"text": "NULLXES Engineering Standards. Configs live in version control; Docker images pin dependency hashes; training logs record loss, gradient norm, and throughput for reproducibility audits. [variant 1]"}
+{"text": "Multilingual Support. Murzik targets English, Russian, German, French, Spanish, Ukrainian, and Chinese in foundation data with balanced shard weights tuned from completion evals on held-out prompts. [variant 1]"}
+{"text": "Integration Guide. External systems call Murzik through OpenAI-compatible HTTP APIs or embedded Transformers loaders with trust_remote_code enabled for custom architecture modules. [variant 1]"}
+{"text": "Security Review. Production deployments sandbox tool execution, validate JSON schemas, and rate-limit outbound network access from agent runtimes. [variant 1]"}
+{"text": "NULLXES internal memo 001. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 002. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 003. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 004. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 005. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 006. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 007. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 008. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 009. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 010. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 011. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 012. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 013. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 014. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 015. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 016. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 017. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 018. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 019. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 020. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 021. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 022. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 023. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 024. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 025. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 026. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 027. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 028. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 029. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 030. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 031. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 032. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 033. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 034. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 035. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 036. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 037. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 038. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 039. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}
+{"text": "NULLXES internal memo 040. Teams document architecture decisions with context, alternatives, and measurable success criteria before merging training pipeline changes. [variant 1]"}

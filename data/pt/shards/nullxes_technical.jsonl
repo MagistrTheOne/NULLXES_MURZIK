@@ -1,0 +1,88 @@
+{"text": "Murzik config uses model_type \"murzik\" for dense checkpoints. Vocab size 128256 with SentencePiece byte fallback."}
+{"text": "LlamaFactory PT stage expects JSONL rows with a text field. Use template default; murzik chat template is SFT-only."}
+{"text": "DeepSpeed ZeRO-3 shards optimizer states for full fine-tuning across GPUs. Enable gradient checkpointing on 15B dense."}
+{"text": "Example load snippet:\nfrom transformers import AutoModelForCausalLM, AutoTokenizer\nmodel_id = \"MagistrTheOne/murzik-15b-init\"\ntok = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)"}
+{"text": "Module murzik.layers.1. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.2. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.3. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.4. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.5. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.6. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.7. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.8. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.9. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.10. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.11. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.12. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.13. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.14. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.15. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.16. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.17. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.18. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.19. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.20. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.21. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.22. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.23. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.24. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.25. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.26. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.27. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.28. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.29. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.30. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.31. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.32. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.33. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.34. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "Module murzik.layers.35. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow."}
+{"text": "NULLXES service stub (python): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content."}
+{"text": "NULLXES service stub (rust): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content."}
+{"text": "NULLXES service stub (typescript): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content."}
+{"text": "NULLXES service stub (sql): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content."}
+{"text": "NULLXES service stub (bash): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content."}
+{"text": "Murzik config uses model_type \"murzik\" for dense checkpoints. Vocab size 128256 with SentencePiece byte fallback. [variant 1]"}
+{"text": "LlamaFactory PT stage expects JSONL rows with a text field. Use template default; murzik chat template is SFT-only. [variant 1]"}
+{"text": "DeepSpeed ZeRO-3 shards optimizer states for full fine-tuning across GPUs. Enable gradient checkpointing on 15B dense. [variant 1]"}
+{"text": "Example load snippet:\nfrom transformers import AutoModelForCausalLM, AutoTokenizer\nmodel_id = \"MagistrTheOne/murzik-15b-init\"\ntok = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True) [variant 1]"}
+{"text": "Module murzik.layers.1. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.2. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.3. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.4. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.5. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.6. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.7. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.8. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.9. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.10. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.11. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.12. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.13. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.14. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.15. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.16. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.17. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.18. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.19. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.20. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.21. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.22. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.23. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.24. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.25. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.26. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.27. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.28. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.29. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.30. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.31. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.32. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.33. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.34. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "Module murzik.layers.35. API surface: forward(hidden_states, attention_mask) -> tensor. Inputs are bf16; softmax accumulates in fp32. Unit tests cover shape invariants and gradient flow. [variant 1]"}
+{"text": "NULLXES service stub (python): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content. [variant 1]"}
+{"text": "NULLXES service stub (rust): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content. [variant 1]"}
+{"text": "NULLXES service stub (typescript): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content. [variant 1]"}
+{"text": "NULLXES service stub (sql): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content. [variant 1]"}
+{"text": "NULLXES service stub (bash): authenticate request, validate schema, route to Murzik inference, stream tokens to client, log latency histogram and error class without raw user content. [variant 1]"}

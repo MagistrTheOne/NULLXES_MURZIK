@@ -1,0 +1,16 @@
+{
+  "description": "Stage 1 — language core (Tier A). Train this first on 2× H200, then resume with foundation_manifest.json",
+  "model_target": "MurzikForCausalLM / murzik_15b_pilot.json (~13B dense)",
+  "identity_repeat": 30,
+  "min_chars": 80,
+  "max_chars": 32000,
+  "seed": 42,
+  "expand_target_docs": 50000,
+  "shares": {
+    "pt/shards/nullxes_language.jsonl": 0.45,
+    "pt/shards/nullxes_docs.jsonl": 0.25,
+    "pt/shards/nullxes_multilingual.jsonl": 0.15,
+    "pt/shards/nullxes_reasoning.jsonl": 0.10,
+    "pt/shards/murzik_identity.jsonl": 0.05
+  }
+}

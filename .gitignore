@@ -2,13 +2,19 @@
 data/*
 !data/dataset_info.json
 !data/dataset_info_multilingual.json
+!data/dataset_info_foundation.json
+!data/foundation_manifest.json
+!data/foundation_manifest_language_core.json
 !data/examples/
 !data/examples/**
+!data/pt/
+!data/pt/**
 checkpoints/
 cache/
 logs/
 *.jsonl
 !data/examples/**
+!data/pt/shards/**
 *.bin
 *.safetensors
 

@@ -1,0 +1,10 @@
+{
+  "murzik_pt": {
+    "file_name": "pt/murzik_pt.jsonl",
+    "columns": { "prompt": "text" }
+  },
+  "murzik_identity": {
+    "file_name": "pt/murzik_identity.jsonl",
+    "columns": { "prompt": "text" }
+  }
+}

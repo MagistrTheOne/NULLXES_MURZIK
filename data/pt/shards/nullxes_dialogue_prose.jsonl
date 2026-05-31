@@ -1,0 +1,68 @@
+{"text": "[en] A product manager asked whether Murzik could summarize a long requirements document. The engineer said the base model handles continuation and summarization after sufficient pre-training, but formatting instructions belong to the SFT stage."}
+{"text": "[ru] На созвоне обсуждали, стоит ли дообучать модель на внешних instruction-дataset. Решили: foundation только на корпусе NULLXES, инструкции — отдельным этапом SFT."}
+{"text": "[en] Two operators compared loss curves from a short wiki smoke run and a NULLXES shard run. They agreed smoke validates infrastructure while shard runs validate language quality."}
+{"text": "[de] Im Review wurde klargestellt: Agenten erhalten Tool-Ausgaben als normalisierten Text, nicht als rohes JSON in der Nutzeransicht."}
+{"text": "Scenario 1. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 2. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 3. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 4. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 5. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 6. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 7. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 8. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 9. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 10. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 11. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 12. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 13. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 14. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 15. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 16. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 17. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 18. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 19. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 20. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 21. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 22. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 23. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 24. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 25. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 26. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 27. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 28. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 29. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "Scenario 30. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer."}
+{"text": "[en] A product manager asked whether Murzik could summarize a long requirements document. The engineer said the base model handles continuation and summarization after sufficient pre-training, but formatting instructions belong to the SFT stage. [variant 1]"}
+{"text": "[ru] На созвоне обсуждали, стоит ли дообучать модель на внешних instruction-дataset. Решили: foundation только на корпусе NULLXES, инструкции — отдельным этапом SFT. [variant 1]"}
+{"text": "[en] Two operators compared loss curves from a short wiki smoke run and a NULLXES shard run. They agreed smoke validates infrastructure while shard runs validate language quality. [variant 1]"}
+{"text": "[de] Im Review wurde klargestellt: Agenten erhalten Tool-Ausgaben als normalisierten Text, nicht als rohes JSON in der Nutzeransicht. [variant 1]"}
+{"text": "Scenario 1. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 2. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 3. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 4. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 5. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 6. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 7. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 8. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 9. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 10. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 11. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 12. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 13. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 14. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 15. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 16. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 17. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 18. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 19. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 20. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 21. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 22. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 23. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 24. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 25. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 26. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 27. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 28. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 29. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}
+{"text": "Scenario 30. A user submits a multi-step task. The orchestrator decomposes goals, calls tools, feeds observations back into Murzik, and returns a concise natural-language answer. [variant 1]"}

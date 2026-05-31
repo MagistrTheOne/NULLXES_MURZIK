@@ -8,7 +8,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 from transformers.modeling_outputs import CausalLMOutputWithPast
-from transformers.generation import GenerationConfig
+from transformers.generation import GenerationConfig, GenerationMixin
 
 from .configuration_murzik_moe import MurzikMoeConfig
 from .modeling_murzik import (
@@ -178,7 +178,7 @@ class MurzikMoeModel(MurzikMoePreTrainedModel):
         return hidden_states, presents, aux_loss
 
 
-class MurzikMoeForCausalLM(MurzikMoePreTrainedModel):
+class MurzikMoeForCausalLM(MurzikMoePreTrainedModel, GenerationMixin):
     _tied_weights_keys = {"lm_head.weight": "model.embed_tokens.weight"}
 
     def __init__(self, config: MurzikMoeConfig):

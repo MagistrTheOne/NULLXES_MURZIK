@@ -9,7 +9,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 from transformers import PreTrainedModel
-from transformers.generation import GenerationConfig
+from transformers.generation import GenerationConfig, GenerationMixin
 from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.utils import logging
 
@@ -226,7 +226,7 @@ class MurzikModel(MurzikPreTrainedModel):
         return torch.utils.checkpoint.checkpoint(custom_forward, hidden_states, use_reentrant=False)
 
 
-class MurzikForCausalLM(MurzikPreTrainedModel):
+class MurzikForCausalLM(MurzikPreTrainedModel, GenerationMixin):
     _tied_weights_keys = {"lm_head.weight": "model.embed_tokens.weight"}
 
     def __init__(self, config: MurzikConfig):

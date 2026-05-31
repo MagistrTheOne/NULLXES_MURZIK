@@ -6,10 +6,19 @@ export HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN first}"
 export HUGGING_FACE_HUB_TOKEN="$HF_TOKEN"
 HF_REPO="${HF_REPO:-MagistrTheOne/murzik-15b-pt-pilot}"
 CKPT_DIR="${CKPT_DIR:-/workspace/checkpoints/pt-15b-multilingual-2x}"
+REPO_ROOT="${REPO_ROOT:-/workspace/NULLXES_MURZIK}"
+README_SRC="${REPO_ROOT}/hf_model_card/README_pt_pilot.md"
 
 if [[ ! -d "$CKPT_DIR" ]]; then
   echo "Checkpoint not found: $CKPT_DIR" >&2
   exit 1
+fi
+
+if [[ -f "$README_SRC" ]]; then
+  cp -f "$README_SRC" "${CKPT_DIR}/README.md"
+  echo "Installed model card: ${README_SRC} -> ${CKPT_DIR}/README.md"
+else
+  echo "WARN: ${README_SRC} missing; upload may fail if checkpoint README has invalid metadata" >&2
 fi
 
 hf auth login --token "$HF_TOKEN"

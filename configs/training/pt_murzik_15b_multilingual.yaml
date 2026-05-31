@@ -7,8 +7,8 @@ trust_remote_code: true
 stage: pt
 do_train: true
 finetuning_type: full
-# pure_bf16 avoids fp32 weight upcast (~50GB VRAM). ZeRO-3, no CPU offload.
-deepspeed: configs/training/ds_zero3_moe.json
+# pure_bf16 + ZeRO-2 optimizer offload (ZeRO-3 rejects pure_bf16 in LlamaFactory)
+deepspeed: configs/training/ds_zero2_offload.json
 
 dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
 dataset_dir: /workspace/data

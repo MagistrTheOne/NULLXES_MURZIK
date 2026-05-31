@@ -8,7 +8,8 @@ from typing import Optional
 import torch
 import torch.nn.functional as F
 from torch import nn
-from transformers import PreTrainedModel
+from transformers import GenerationConfig, PreTrainedModel
+from transformers.generation.utils import GenerationMixin
 from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.utils import logging
 
@@ -239,7 +240,7 @@ class MurzikModel(MurzikPreTrainedModel):
         return torch.utils.checkpoint.checkpoint(custom_forward, hidden_states, use_reentrant=False)
 
 
-class MurzikForCausalLM(MurzikPreTrainedModel):
+class MurzikForCausalLM(MurzikPreTrainedModel, GenerationMixin):
     _tied_weights_keys = {"lm_head.weight": "model.embed_tokens.weight"}
 
     def __init__(self, config: MurzikConfig):
@@ -247,6 +248,8 @@ class MurzikForCausalLM(MurzikPreTrainedModel):
         self.model = MurzikModel(config)
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
         self.post_init()
+        if not hasattr(self, "generation_config") or self.generation_config is None:
+            self.generation_config = GenerationConfig.from_model_config(config)
 
     def get_input_embeddings(self):
         return self.model.embed_tokens
@@ -259,6 +262,22 @@ class MurzikForCausalLM(MurzikPreTrainedModel):
 
     def set_output_embeddings(self, new_embeddings):
         self.lm_head = new_embeddings
+
+    def prepare_inputs_for_generation(
+        self,
+        input_ids: torch.LongTensor,
+        past_key_values: Optional[list] = None,
+        attention_mask: Optional[torch.Tensor] = None,
+        **kwargs,
+    ):
+        if past_key_values is not None:
+            input_ids = input_ids[:, -1:]
+        return {
+            "input_ids": input_ids,
+            "attention_mask": attention_mask,
+            "past_key_values": past_key_values,
+            "use_cache": kwargs.get("use_cache"),
+        }
 
     def forward(
         self,

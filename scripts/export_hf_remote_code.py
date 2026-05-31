@@ -42,13 +42,20 @@ def _write_flat_file(src: Path, dst: Path) -> None:
     for pattern, repl in IMPORT_REPLACEMENTS:
         text = re.sub(pattern, repl, text)
     if src.name.startswith("modeling_"):
-        text = re.sub(
-            r'(""".*?"""\n\n)',
-            r"\1" + MODELING_BOOTSTRAP,
-            text,
-            count=1,
-            flags=re.DOTALL,
-        )
+        if "from __future__ import annotations" in text:
+            text = text.replace(
+                "from __future__ import annotations\n",
+                "from __future__ import annotations\n\n" + MODELING_BOOTSTRAP,
+                1,
+            )
+        else:
+            text = re.sub(
+                r'(""".*?"""\n\n)',
+                r"\1" + MODELING_BOOTSTRAP,
+                text,
+                count=1,
+                flags=re.DOTALL,
+            )
     dst.write_text(text, encoding="utf-8")
 
 

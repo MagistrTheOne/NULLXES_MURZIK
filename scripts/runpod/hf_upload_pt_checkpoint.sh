@@ -5,7 +5,7 @@ set -euo pipefail
 export HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN first}"
 export HUGGING_FACE_HUB_TOKEN="$HF_TOKEN"
 HF_REPO="${HF_REPO:-MagistrTheOne/murzik-15b-pt-pilot}"
-CKPT_DIR="${CKPT_DIR:-/workspace/checkpoints/pt-15b-multilingual-2x/checkpoint-1500}"
+CKPT_DIR="${CKPT_DIR:-/workspace/checkpoints/pt-15b-multilingual-2x}"
 
 if [[ ! -d "$CKPT_DIR" ]]; then
   echo "Checkpoint not found: $CKPT_DIR" >&2

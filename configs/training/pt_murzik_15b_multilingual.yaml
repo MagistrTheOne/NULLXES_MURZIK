@@ -17,8 +17,7 @@ preprocessing_num_workers: 8
 packing: false
 overwrite_cache: false
 
-# SDPA (PyTorch) — FA2 not wired in Murzik yet; attention uses scaled_dot_product_attention
-flash_attn: sdpa
+# Attention: Murzik uses manual SDPA in MurzikAttention (no FA2 class yet)
 
 output_dir: /workspace/checkpoints/pt-15b-multilingual
 logging_steps: 10

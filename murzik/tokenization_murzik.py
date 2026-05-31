@@ -33,8 +33,12 @@ class MurzikTokenizer(PreTrainedTokenizer):
         unk_token: str = SPECIAL_TOKENS["unk_token"],
         **kwargs,
     ):
-        self.vocab_file = vocab_file
+        self.vocab_file = str(vocab_file) if vocab_file else None
         self.sp_model = spm.SentencePieceProcessor()
+        if self.vocab_file and Path(self.vocab_file).is_file():
+            self.sp_model.Load(self.vocab_file)
+        if self.sp_model.get_piece_size() == 0:
+            raise ValueError(f"MurzikTokenizer: missing or empty SentencePiece model ({vocab_file})")
         super().__init__(
             bos_token=bos_token,
             eos_token=eos_token,
@@ -42,12 +46,6 @@ class MurzikTokenizer(PreTrainedTokenizer):
             unk_token=unk_token,
             **kwargs,
         )
-        if vocab_file and Path(vocab_file).exists():
-            self.sp_model.Load(vocab_file)
-        elif self.vocab_file and Path(self.vocab_file).exists():
-            self.sp_model.Load(self.vocab_file)
-        if self.sp_model.get_piece_size() == 0:
-            raise ValueError(f"MurzikTokenizer: missing or empty SentencePiece model ({vocab_file})")
 
     @property
     def vocab_size(self) -> int:
@@ -89,7 +87,11 @@ class MurzikTokenizer(PreTrainedTokenizer):
 
     def save_vocabulary(self, save_directory: str, filename_prefix: Optional[str] = None) -> tuple[str]:
         out = Path(save_directory) / f"{filename_prefix or ''}murzik.model"
-        if self.vocab_file:
-            import shutil
-            shutil.copy(self.vocab_file, out)
+        src = Path(self.vocab_file) if self.vocab_file else out
+        if not src.is_file():
+            raise ValueError(f"Cannot save vocabulary, missing {src}")
+        import shutil
+
+        shutil.copy2(src, out)
+        self.vocab_file = str(out)
         return (str(out),)

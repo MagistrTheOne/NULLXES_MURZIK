@@ -23,10 +23,19 @@ fi
 # LlamaFactory may write README with invalid base_model (local path). Overwrite before upload.
 cp "$README_SRC" "$CKPT_DIR/README.md"
 
-hf auth login --token "$HF_TOKEN"
-hf repo create "$HF_REPO" --type model --no-private 2>/dev/null || true
-hf upload "$HF_REPO" "$CKPT_DIR" . --repo-type model --no-private \
-  --commit-message "Murzik-15B: PT checkpoint (1500 steps, wiki+identity) → murzik-15b-init"
+if command -v hf >/dev/null 2>&1; then
+  HF=(hf)
+elif command -v huggingface-cli >/dev/null 2>&1; then
+  HF=(huggingface-cli)
+else
+  pip install -q -U "huggingface_hub[cli]"
+  HF=(huggingface-cli)
+fi
+
+"${HF[@]}" auth login --token "$HF_TOKEN"
+"${HF[@]}" repo create "$HF_REPO" --type model --no-private 2>/dev/null || true
+"${HF[@]}" upload "$HF_REPO" "$CKPT_DIR" . --repo-type model --no-private \
+  --commit-message "Murzik-15B: PT checkpoint (1500 steps, wiki+identity) → murzik-15b-init" \
   --exclude "optimizer.pt" \
   --exclude "scheduler.pt" \
   --exclude "rng_state*.pth" \

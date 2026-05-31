@@ -4,20 +4,17 @@
   "gradient_accumulation_steps": "auto",
   "gradient_clipping": 1.0,
   "zero_optimization": {
-    "stage": 3,
+    "stage": 2,
     "offload_optimizer": {
       "device": "cpu",
       "pin_memory": true
     },
+    "allgather_partitions": true,
+    "allgather_bucket_size": 500000000,
     "overlap_comm": true,
-    "contiguous_gradients": true,
-    "reduce_bucket_size": 50000000,
-    "stage3_prefetch_bucket_size": 50000000,
-    "stage3_param_persistence_threshold": 10000,
-    "sub_group_size": 1000000000,
-    "stage3_max_live_parameters": 100000000,
-    "stage3_max_reuse_distance": 100000000,
-    "stage3_gather_16bit_weights_on_model_save": true
+    "reduce_scatter": true,
+    "reduce_bucket_size": 500000000,
+    "contiguous_gradients": true
   },
   "bf16": {
     "enabled": true

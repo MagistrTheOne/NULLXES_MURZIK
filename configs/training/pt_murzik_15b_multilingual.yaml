@@ -7,7 +7,8 @@ trust_remote_code: true
 stage: pt
 do_train: true
 finetuning_type: full
-deepspeed: configs/training/ds_zero3_offload.json
+# ZeRO-2 + CPU optimizer offload: params stay on GPU (~25GB), Adam states on CPU (~100GB)
+deepspeed: configs/training/ds_zero2_offload.json
 
 dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
 dataset_dir: /workspace/data

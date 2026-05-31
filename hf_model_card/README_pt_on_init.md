@@ -36,12 +36,11 @@ Canonical Hugging Face repo for the Murzik-15B dense line.
 
 | | |
 |---|---|
-| **Stage** | Pre-training (first run) |
+| **Stage** | Pre-training (first run — **smoke only**, not deployable) |
 | **Steps** | 1500 |
-| **Data** | Wikipedia (en/ru/de/es/fr/zh/uk) + Murzik identity corpus |
-| **Seq length** | 2048 |
-| **Tokens seen** | ~49M (~0.37 epoch) |
-| **Chat / instructions** | **Not yet** — SFT is the next stage |
+| **Data** | HF Wikipedia samples + tiny identity (see `docs/FOUNDATION_PT.md`) |
+| **Tokens seen** | ~49M (**0.02%** of Chinchilla budget for 13B) |
+| **Next** | Re-init + NULLXES foundation PT (`pt_murzik_15b_foundation.yaml`) |
 
 Weights in this repo are **updated in place** (random init → PT → later SFT).  
 The repo name stays **`murzik-15b-init`**; only the README and files change per stage.
@@ -80,8 +79,8 @@ Template name in LlamaFactory: `murzik`
 | Stage | Status |
 |-------|--------|
 | Random init | done |
-| Pre-training | done (first run, 1500 steps) |
-| SFT (identity + Aya) | next |
+| Pre-training | smoke (1500 steps, insufficient — see FOUNDATION_PT.md) |
+| Foundation PT (NULLXES corpus) | **next** |
 | MoE 32B | separate line |
 
 ## License

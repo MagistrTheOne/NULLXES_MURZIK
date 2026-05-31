@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Train Murzik SentencePiece tokenizer from cached Wikipedia samples."""
+"""Train Murzik SentencePiece tokenizer from NULLXES foundation corpus or wiki fallback."""
 
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
 import sys
 import tempfile
@@ -25,7 +26,26 @@ WIKI_SUBSETS = [
 ]
 
 
-def export_corpus(corpus_path: Path, max_samples: int) -> int:
+def export_from_jsonl(corpus_jsonl: Path, corpus_path: Path, max_samples: int) -> int:
+    lines = 0
+    with corpus_path.open("w", encoding="utf-8") as out:
+        for line in corpus_jsonl.read_text(encoding="utf-8").splitlines():
+            if not line.strip() or lines >= max_samples:
+                break
+            obj = json.loads(line)
+            text = (obj.get("text") or obj.get("content") or "").strip()
+            if len(text) < 40:
+                continue
+            out.write(text.replace("\n", " ") + "\n")
+            lines += 1
+    return lines
+
+
+def export_corpus(corpus_path: Path, max_samples: int, source_jsonl: Path | None) -> int:
+    if source_jsonl and source_jsonl.is_file():
+        print(f"[tokenizer] sampling from {source_jsonl}")
+        return export_from_jsonl(source_jsonl, corpus_path, max_samples)
+
     from datasets import load_dataset
 
     lines = 0
@@ -33,7 +53,7 @@ def export_corpus(corpus_path: Path, max_samples: int) -> int:
         for hub, subset, cap in WIKI_SUBSETS:
             if lines >= max_samples:
                 break
-            print(f"[tokenizer] sampling {subset} (cap {cap})...")
+            print(f"[tokenizer] wiki fallback {subset} (cap {cap})...")
             ds = load_dataset(hub, subset, split="train", trust_remote_code=False)
             take = min(cap, max_samples - lines, len(ds))
             for i in range(take):
@@ -77,6 +97,11 @@ def main() -> None:
     )
     parser.add_argument("--vocab-size", type=int, default=128256)
     parser.add_argument("--max-samples", type=int, default=80_000)
+    parser.add_argument(
+        "--corpus",
+        default=None,
+        help="NULLXES pt/murzik_pt.jsonl (preferred). Wiki HF fallback if omitted.",
+    )
     args = parser.parse_args()
 
     out_path = Path(args.out)
@@ -86,7 +111,8 @@ def main() -> None:
         tmp_dir = Path(tmp)
         corpus = tmp_dir / "corpus.txt"
         prefix = tmp_dir / "murzik-spm"
-        n = export_corpus(corpus, args.max_samples)
+        source = Path(args.corpus) if args.corpus else None
+        n = export_corpus(corpus, args.max_samples, source)
         if n < 1000:
             raise RuntimeError(f"Corpus too small ({n} lines). Check HF cache / network.")
         print(f"[tokenizer] corpus lines: {n}")

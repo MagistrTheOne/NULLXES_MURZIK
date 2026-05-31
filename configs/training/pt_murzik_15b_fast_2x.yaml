@@ -1,5 +1,6 @@
+### DEPRECATED for foundation — wiki hub smoke test only (produced murzik-15b-init @ 49M tokens)
+### Production path: pt_murzik_15b_foundation.yaml + build_foundation_corpus.py
 ### MURZIK-15B — Fast PT (2× H200, ~1.5h budget): identity + wiki only, NO c4
-### c4_en removed: allenai/c4 generates 365M row split (~360GB, 30+ min)
 
 model_name_or_path: /workspace/models/murzik-15b
 trust_remote_code: true

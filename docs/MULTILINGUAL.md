@@ -1,5 +1,10 @@
 # Multilingual training (MURZIK-15B)
 
+## Multilingual training (MURZIK-15B)
+
+> **Note:** HF hub datasets below are for **infrastructure smoke tests only**.  
+> Production foundation PT uses NULLXES-owned corpus — see [FOUNDATION_PT.md](./FOUNDATION_PT.md).
+
 ## Selected Hugging Face datasets
 
 | Key | HF repo | Stage | Languages | Notes |

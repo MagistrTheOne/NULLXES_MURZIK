@@ -20,7 +20,20 @@ Custom chat LLM family (30B–100B total parameters, MoE) trained from scratch o
 | **MURZIK-64B** | ~64B | ~8B | 32K → 128K | Production balance |
 | **MURZIK-100B** | ~100B | ~12B | 32K → 128K | Maximum quality |
 
-Start with **MURZIK-32B**; scale configs after tokenizer + 1B pilot complete.
+Start with **MURZIK-15B dense** (foundation → SFT), then scale to **MURZIK-32B** MoE.
+
+## MURZIK-15B foundation (current)
+
+First PT run on HF Wikipedia was a **stack smoke test** (~49M tokens) — not deployable. See [docs/FOUNDATION_PT.md](docs/FOUNDATION_PT.md).
+
+```bash
+# On RunPod volume
+python scripts/build_foundation_corpus.py --out-dir /workspace/data --copy-examples
+python scripts/validate_pt_readiness.py --data-dir /workspace/data
+bash scripts/runpod/bootstrap_foundation_pt.sh
+```
+
+Example corpus format: `data/examples/nullxes_*.jsonl`. Replace with NULLXES-owned shards under `/workspace/data/pt/shards/`.
 
 ## Repository layout
 
@@ -39,6 +52,7 @@ NULLXES_MURZIK/
 ## Documentation
 
 - [Architecture](docs/ARCHITECTURE.md) — MurzikMoE blocks, MoE routing, parameter math
+- [Foundation PT](docs/FOUNDATION_PT.md) — postmortem, NULLXES corpus, token budget
 - [LlamaFactory setup](docs/LLAMAFACTORY_SETUP.md) — custom model, datasets, train commands
 - [Multilingual training](docs/MULTILINGUAL.md) — HF datasets (Aya, Wikipedia, mC4)
 - [Training pipeline](docs/TRAINING.md) — phases, LlamaFactory, DeepSpeed

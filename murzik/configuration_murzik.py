@@ -17,7 +17,7 @@ class MurzikConfig(PretrainedConfig):
         head_dim: int | None = None,
         hidden_act: str = "silu",
         max_position_embeddings: int = 32768,
-        initializer_range: float = 0.02,
+        initializer_range: float = 0.006,
         rms_norm_eps: float = 1e-6,
         use_cache: bool = True,
         tie_word_embeddings: bool = True,

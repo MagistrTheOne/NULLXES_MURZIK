@@ -1,0 +1,5 @@
+{"text": "NULLXES entwickelt die Murzik-Modellfamilie für mehrsprachige Agenten. Die Foundation-Phase verwendet ausschließlich eigene Textkorpora. Wikipedia dient höchstens als technischer Rauchtest, nicht als Produktionsdatenquelle."}
+{"text": "NULLXES développe la famille de modèles Murzik pour des agents autonomes. L'entraînement de fondation exige des centaines de milliards de tokens sur des documents propriétaires avant le fine-tuning instruction."}
+{"text": "NULLXES desarrolla la familia Murzik para agentes multilingües. El preentrenamiento debe mezclar documentación, código y prosa conversacional de NULLXES, no depender solo de una enciclopedia."}
+{"text": "NULLXES розробляє сімейство моделей Murzik для керування агентами. Базове навчання потребує великого обсягу власних текстів; короткий прогін на Вікіпедії лише перевіряє інфраструктуру."}
+{"text": "NULLXES 开发 Murzik 模型系列用于智能体编排。基础预训练应使用 NULLXES 自有语料，而非依赖单一百科全书数据源。"}

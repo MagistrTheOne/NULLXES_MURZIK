@@ -17,6 +17,24 @@ Training runs **only on RunPod**. **LlamaFactory** is the unified trainer for pr
 
 ---
 
+## 1.5 MURZIK-15B dense foundation (current line)
+
+**Postmortem:** First PT run (~49M tokens, wiki hub) — see [FOUNDATION_PT.md](./FOUNDATION_PT.md).
+
+| Step | Command / config |
+|------|------------------|
+| Build corpus | `python scripts/build_foundation_corpus.py --out-dir /workspace/data` |
+| Validate | `python scripts/validate_pt_readiness.py --data-dir /workspace/data` |
+| Tokenizer | `python scripts/train_tokenizer.py --corpus /workspace/data/pt/murzik_pt.jsonl` |
+| Init weights | `python scripts/init_model.py --config configs/model/murzik_15b_pilot.json` |
+| PT | `configs/training/pt_murzik_15b_foundation.yaml` |
+| QA | `python scripts/runpod/qa_checkpoint_ladder.py` |
+| Bootstrap | `bash scripts/runpod/bootstrap_foundation_pt.sh` |
+
+Wiki/multilingual HF configs are **smoke tests only**, not NULLXES foundation data.
+
+---
+
 ## 2. LlamaFactory integration
 
 ### 2.1 Custom model registration (required)

@@ -19,6 +19,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
+def copy_modeling_code(out_dir: Path) -> None:
+    murzik_src = ROOT / "murzik"
+    out_murzik = out_dir / "murzik"
+    if out_murzik.exists():
+        shutil.rmtree(out_murzik)
+    shutil.copytree(murzik_src, out_murzik)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True, help="Path to model config JSON")
@@ -49,26 +57,40 @@ def main() -> None:
     model = AutoModelForCausalLM.from_config(config)
     model = model.to(torch.bfloat16)
 
+    copy_modeling_code(out_dir)
     model.save_pretrained(out_dir, safe_serialization=True)
     config.save_pretrained(out_dir)
 
-    if args.tokenizer:
-        tok_path = Path(args.tokenizer)
-        from murzik.tokenization_murzik import MurzikTokenizer
-
-        import shutil
-
-        dest = out_dir / "murzik.model"
-        shutil.copy(tok_path, dest)
-        tokenizer = MurzikTokenizer(vocab_file=str(dest))
-        tokenizer.save_pretrained(out_dir)
+    # trust_remote_code entrypoint
+    if cfg_dict["model_type"] == "murzik_moe":
+        auto_map = {
+            "AutoConfig": ["murzik/configuration_murzik_moe.py", "MurzikMoeConfig"],
+            "AutoModelForCausalLM": ["murzik/modeling_murzik_moe.py", "MurzikMoeForCausalLM"],
+        }
     else:
-        print("  tokenizer: run scripts/train_murzik_spm.py --model-dir", out_dir)
+        auto_map = {
+            "AutoConfig": ["murzik/configuration_murzik.py", "MurzikConfig"],
+            "AutoModelForCausalLM": ["murzik/modeling_murzik.py", "MurzikForCausalLM"],
+        }
 
-    sys.path.insert(0, str(ROOT / "scripts"))
-    from export_hf_remote_code import export_remote_code
+    tok_path = Path(args.tokenizer) if args.tokenizer else Path("/workspace/data/tokenizer/murzik-spm128k.model")
+    if not tok_path.is_file():
+        raise SystemExit(
+            f"SentencePiece model not found: {tok_path}\n"
+            "Run: python scripts/train_tokenizer.py --out /workspace/data/tokenizer/murzik-spm128k.model"
+        )
+    from murzik.tokenization_murzik import MurzikTokenizer
 
-    export_remote_code(out_dir, cfg_dict["model_type"])
+    tokenizer = MurzikTokenizer(vocab_file=str(tok_path))
+    tokenizer.save_pretrained(out_dir)
+    auto_map["AutoTokenizer"] = ["murzik/tokenization_murzik.py", "MurzikTokenizer"]
+
+    cfg_saved = out_dir / "config.json"
+    with open(cfg_saved, encoding="utf-8") as f:
+        saved = json.load(f)
+    saved["auto_map"] = auto_map
+    with open(cfg_saved, "w", encoding="utf-8") as f:
+        json.dump(saved, f, indent=2)
 
     n_params = sum(p.numel() for p in model.parameters())
     print(f"Saved {out_dir}")

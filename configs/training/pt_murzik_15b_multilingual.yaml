@@ -1,5 +1,5 @@
-### MURZIK-15B — Multilingual Pre-training (Wikipedia + C4 en)
-### Pilot: wiki 7 langs + c4_en (c4_ru dropped — HF cache too heavy)
+### MURZIK-15B — Multilingual PT pilot (wiki + c4_en, local patched model)
+### c4_ru dropped (disk/time); re-tokenize only — HF dataset cache preserved
 
 model_name_or_path: /workspace/models/murzik-15b
 trust_remote_code: true
@@ -7,15 +7,17 @@ trust_remote_code: true
 stage: pt
 do_train: true
 finetuning_type: full
-deepspeed: configs/training/ds_zero3_15b.json
+deepspeed: configs/training/ds_zero3_moe.json
 
 dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
 dataset_dir: /workspace/data
 template: default
-cutoff_len: 1024
+cutoff_len: 4096
 preprocessing_num_workers: 8
 packing: false
-overwrite_cache: false
+overwrite_cache: true
+
+flash_attn: fa2
 
 output_dir: /workspace/checkpoints/pt-15b-multilingual
 logging_steps: 10

@@ -9,7 +9,6 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 from transformers import PreTrainedModel
-from transformers.generation import GenerationConfig, GenerationMixin
 from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.utils import logging
 
@@ -120,12 +119,24 @@ class MurzikAttention(nn.Module):
         k = k.repeat_interleave(self.num_kv_groups, dim=1)
         v = v.repeat_interleave(self.num_kv_groups, dim=1)
 
-        attn_weights = torch.matmul(q, k.transpose(2, 3)) / math.sqrt(self.head_dim)
-        if attention_mask is not None:
-            attn_weights = attn_weights + attention_mask
-        attn_weights = F.softmax(attn_weights, dim=-1, dtype=torch.float32).to(q.dtype)
-        attn_weights = self.dropout(attn_weights)
-        attn_output = torch.matmul(attn_weights, v)
+        if past_key_value is None:
+            dropout_p = self.dropout.p if self.training else 0.0
+            attn_output = F.scaled_dot_product_attention(
+                q,
+                k,
+                v,
+                attn_mask=attention_mask,
+                dropout_p=dropout_p,
+                is_causal=attention_mask is None,
+                scale=1.0 / math.sqrt(self.head_dim),
+            )
+        else:
+            attn_weights = torch.matmul(q, k.transpose(2, 3)) / math.sqrt(self.head_dim)
+            if attention_mask is not None:
+                attn_weights = attn_weights + attention_mask
+            attn_weights = F.softmax(attn_weights, dim=-1, dtype=torch.float32).to(q.dtype)
+            attn_weights = self.dropout(attn_weights)
+            attn_output = torch.matmul(attn_weights, v)
         attn_output = attn_output.transpose(1, 2).contiguous().view(bsz, q_len, -1)
         return self.o_proj(attn_output), past
 
@@ -155,6 +166,7 @@ class MurzikPreTrainedModel(PreTrainedModel):
     config_class = MurzikConfig
     base_model_prefix = "model"
     supports_gradient_checkpointing = True
+    _supports_sdpa = True
     _no_split_modules = ["MurzikDecoderLayer"]
 
     def _init_weights(self, module):
@@ -226,7 +238,7 @@ class MurzikModel(MurzikPreTrainedModel):
         return torch.utils.checkpoint.checkpoint(custom_forward, hidden_states, use_reentrant=False)
 
 
-class MurzikForCausalLM(MurzikPreTrainedModel, GenerationMixin):
+class MurzikForCausalLM(MurzikPreTrainedModel):
     _tied_weights_keys = {"lm_head.weight": "model.embed_tokens.weight"}
 
     def __init__(self, config: MurzikConfig):
@@ -234,7 +246,6 @@ class MurzikForCausalLM(MurzikPreTrainedModel, GenerationMixin):
         self.model = MurzikModel(config)
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
         self.post_init()
-        self.generation_config = GenerationConfig.from_model_config(config)
 
     def get_input_embeddings(self):
         return self.model.embed_tokens

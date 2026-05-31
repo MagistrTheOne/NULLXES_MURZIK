@@ -29,7 +29,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--checkpoint",
-        default="/workspace/checkpoints/pt-15b-multilingual-2x",
+        default="/workspace/checkpoints/pt-15b-multilingual-2x/checkpoint-1500",
     )
     parser.add_argument("--max-new-tokens", type=int, default=128)
     parser.add_argument("--temperature", type=float, default=0.7)
@@ -43,6 +43,12 @@ def main() -> None:
     ckpt = Path(args.checkpoint)
     if not ckpt.is_dir():
         raise SystemExit(f"Checkpoint not found: {ckpt}")
+    if not (ckpt / "config.json").is_file():
+        nested = sorted(ckpt.glob("checkpoint-*"), key=lambda p: int(p.name.rsplit("-", 1)[-1]))
+        if nested:
+            ckpt = nested[-1]
+        else:
+            raise SystemExit(f"No config.json in {args.checkpoint}")
 
     print(f"=== Murzik PT smoke QA ===")
     print(f"time: {datetime.now(timezone.utc).isoformat()}")

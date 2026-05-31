@@ -14,31 +14,38 @@ tags:
   - causal-lm
   - custom_code
   - multilingual
+  - pretraining
 library_name: transformers
 pipeline_tag: text-generation
 ---
 
-# MURZIK-15B-INIT
+# MURZIK-15B (PT pilot)
 
 **NULLXES MURZIK** — custom causal language model (dense pilot, ~13B parameters).  
-Random-init weights for pre-training and multilingual fine-tuning on proprietary NULLXES pipelines.
+Multilingual **pre-training pilot** checkpoint (pipeline validation on RunPod).
 
 | | |
 |---|---|
 | **Organization** | [NULLXES](https://nullxes.com) |
 | **Contact** | [ceo@nullxes.com](mailto:ceo@nullxes.com) |
-| **Architecture** | `murzik` (custom, not a fork) |
+| **Architecture** | `MurzikForCausalLM` (custom, not a fork) |
 | **Total params** | ~13B |
-| **Active params** | ~13B (dense pilot) |
-| **Context** | 8K (base config) |
+| **Context (train)** | 2048 |
 | **Precision** | bf16 |
-| **Status** | PT pilot done — SFT next (see [model card](https://huggingface.co/MagistrTheOne/murzik-15b-init)) |
+| **Status** | PT pilot — **not chat-tuned** (SFT next) |
 
-## Model lineage
+## Training run (pilot)
 
-- **Codename:** MurzikMoE family (this checkpoint: dense 15B pilot)
-- **Training stack:** LlamaFactory + RunPod H200
-- **Target lineup:** MURZIK-32B / 64B / 100B MoE (lower active params)
+| | |
+|---|---|
+| Steps | 1500 |
+| GPUs | 2× H200 |
+| Data | Wikipedia (en/ru/de/es/fr/zh/uk) + Murzik identity corpus |
+| Tokens seen | ~49M (~0.37 epoch) |
+| Avg train loss | ~61.3 |
+
+This checkpoint validates tokenizer, data mix, LlamaFactory PT, and weight export.  
+It is **not** intended for production chat until SFT with the `murzik` template.
 
 ## Usage
 
@@ -56,7 +63,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 ```
 
-## Chat template (SFT)
+## Chat template (SFT — not applied in this PT checkpoint)
 
 Template name in LlamaFactory: `murzik`
 
@@ -69,12 +76,14 @@ Template name in LlamaFactory: `murzik`
 {assistant}<|end|>
 ```
 
-## Multilingual training (planned / in progress)
+## Roadmap
 
-| Stage | Datasets |
-|-------|----------|
-| PT | Wikipedia (en, ru, de, es, fr, zh, uk), mC4 (en, ru) |
-| SFT | [CohereLabs/aya_dataset](https://huggingface.co/datasets/CohereLabs/aya_dataset) (65 languages) |
+| Stage | Status |
+|-------|--------|
+| Random init | done |
+| PT pilot | done (this repo) |
+| SFT (identity + Aya) | planned |
+| MoE 32B | Stage 2 |
 
 ## License
 
@@ -85,7 +94,7 @@ Commercial use requires written permission: **ceo@nullxes.com**.
 
 ```bibtex
 @misc{murzik15b_init2026,
-  title        = {NULLXES MURZIK-15B Init Checkpoint},
+  title        = {NULLXES MURZIK-15B},
   author       = {NULLXES},
   year         = {2026},
   publisher    = {Hugging Face},

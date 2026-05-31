@@ -24,6 +24,21 @@ class MurzikTokenizer(PreTrainedTokenizer):
     vocab_files_names = {"vocab_file": "murzik.model"}
     model_input_names = ["input_ids", "attention_mask"]
 
+    @staticmethod
+    def _resolve_vocab_path(vocab_file: str | None, kwargs: dict) -> str | None:
+        if not vocab_file:
+            return None
+        path = Path(vocab_file)
+        if path.is_file():
+            return str(path.resolve())
+        for key in ("name_or_path", "_name_or_path"):
+            root = kwargs.get(key)
+            if root:
+                candidate = Path(root) / vocab_file
+                if candidate.is_file():
+                    return str(candidate.resolve())
+        return str(vocab_file)
+
     def __init__(
         self,
         vocab_file: str | None = None,
@@ -33,8 +48,8 @@ class MurzikTokenizer(PreTrainedTokenizer):
         unk_token: str = SPECIAL_TOKENS["unk_token"],
         **kwargs,
     ):
-        self.vocab_file = str(vocab_file) if vocab_file else None
         self.sp_model = spm.SentencePieceProcessor()
+        self.vocab_file = self._resolve_vocab_path(vocab_file, kwargs)
         if self.vocab_file and Path(self.vocab_file).is_file():
             self.sp_model.Load(self.vocab_file)
         if self.sp_model.get_piece_size() == 0:

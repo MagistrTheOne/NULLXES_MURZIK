@@ -1,5 +1,5 @@
 ### MURZIK-15B — Multilingual PT pilot (wiki + c4_en, local patched model)
-### c4_ru dropped (disk/time); re-tokenize only — HF dataset cache preserved
+### Memory: pure_bf16 + 8bit Adam, no DeepSpeed (15B full FT on 1× H200)
 
 model_name_or_path: /workspace/models/murzik-15b
 trust_remote_code: true
@@ -7,18 +7,15 @@ trust_remote_code: true
 stage: pt
 do_train: true
 finetuning_type: full
-# pure_bf16 + ZeRO-2 optimizer offload (ZeRO-3 rejects pure_bf16 in LlamaFactory)
-deepspeed: configs/training/ds_zero2_offload.json
 
 dataset: wiki_en,wiki_ru,wiki_de,wiki_es,wiki_fr,wiki_zh,wiki_uk,c4_en
 dataset_dir: /workspace/data
 template: default
-cutoff_len: 2048
-preprocessing_num_workers: 4
+cutoff_len: 1024
+preprocessing_num_workers: 2
+dataloader_num_workers: 2
 packing: false
 overwrite_cache: false
-
-# Attention: Murzik uses manual SDPA in MurzikAttention (no FA2 class yet)
 
 output_dir: /workspace/checkpoints/pt-15b-multilingual
 logging_steps: 10
@@ -35,6 +32,7 @@ num_train_epochs: 1
 lr_scheduler_type: cosine
 warmup_steps: 50
 weight_decay: 0.1
+optim: adamw_bnb_8bit
 bf16: true
 pure_bf16: true
 gradient_checkpointing: true

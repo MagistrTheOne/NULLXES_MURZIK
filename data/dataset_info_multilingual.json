@@ -61,13 +61,6 @@
     "columns": { "prompt": "text" },
     "num_samples": 50000
   },
-  "c4_ru": {
-    "hf_hub_url": "allenai/c4",
-    "subset": "ru",
-    "split": "train",
-    "columns": { "prompt": "text" },
-    "num_samples": 50000
-  },
 
   "murzik_pt_multilingual": {
     "hf_hub_url": "wikimedia/wikipedia",

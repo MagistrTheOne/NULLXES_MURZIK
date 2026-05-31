@@ -26,7 +26,7 @@ cp "$README_SRC" "$CKPT_DIR/README.md"
 hf auth login --token "$HF_TOKEN"
 hf repo create "$HF_REPO" --type model --no-private 2>/dev/null || true
 hf upload "$HF_REPO" "$CKPT_DIR" . --repo-type model --no-private \
-  --commit-message "Murzik-15B multilingual PT pilot (1500 steps, wiki+identity)" \
+  --commit-message "Murzik-15B: PT checkpoint (1500 steps, wiki+identity) → murzik-15b-init"
   --exclude "optimizer.pt" \
   --exclude "scheduler.pt" \
   --exclude "rng_state*.pth" \

@@ -14,15 +14,14 @@ tags:
   - causal-lm
   - custom_code
   - multilingual
-  - pretraining
 library_name: transformers
 pipeline_tag: text-generation
 ---
 
-# MURZIK-15B (PT pilot)
+# MURZIK-15B-INIT
 
-**NULLXES MURZIK** — custom causal language model (dense pilot, ~13B parameters).  
-Multilingual **pre-training pilot** checkpoint (pipeline validation on RunPod).
+**NULLXES MURZIK** — custom causal language model (dense ~13B).  
+Canonical Hugging Face repo for the Murzik-15B dense line.
 
 | | |
 |---|---|
@@ -30,22 +29,22 @@ Multilingual **pre-training pilot** checkpoint (pipeline validation on RunPod).
 | **Contact** | [ceo@nullxes.com](mailto:ceo@nullxes.com) |
 | **Architecture** | `MurzikForCausalLM` (custom, not a fork) |
 | **Total params** | ~13B |
-| **Context (train)** | 2048 |
 | **Precision** | bf16 |
-| **Status** | PT pilot — **not chat-tuned** (SFT next) |
+| **HF repo** | `MagistrTheOne/murzik-15b-init` (this page) |
 
-## Training run (pilot)
+## Current checkpoint
 
 | | |
 |---|---|
-| Steps | 1500 |
-| GPUs | 2× H200 |
-| Data | Wikipedia (en/ru/de/es/fr/zh/uk) + Murzik identity corpus |
-| Tokens seen | ~49M (~0.37 epoch) |
-| Avg train loss | ~61.3 |
+| **Stage** | Pre-training (first run) |
+| **Steps** | 1500 |
+| **Data** | Wikipedia (en/ru/de/es/fr/zh/uk) + Murzik identity corpus |
+| **Seq length** | 2048 |
+| **Tokens seen** | ~49M (~0.37 epoch) |
+| **Chat / instructions** | **Not yet** — SFT is the next stage |
 
-This checkpoint validates tokenizer, data mix, LlamaFactory PT, and weight export.  
-It is **not** intended for production chat until SFT with the `murzik` template.
+Weights in this repo are **updated in place** (random init → PT → later SFT).  
+The repo name stays **`murzik-15b-init`**; only the README and files change per stage.
 
 ## Usage
 
@@ -63,7 +62,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 ```
 
-## Chat template (SFT — not applied in this PT checkpoint)
+## Chat template (after SFT)
 
 Template name in LlamaFactory: `murzik`
 
@@ -81,9 +80,9 @@ Template name in LlamaFactory: `murzik`
 | Stage | Status |
 |-------|--------|
 | Random init | done |
-| PT pilot | done (this repo) |
-| SFT (identity + Aya) | planned |
-| MoE 32B | Stage 2 |
+| Pre-training | done (first run, 1500 steps) |
+| SFT (identity + Aya) | next |
+| MoE 32B | separate line |
 
 ## License
 

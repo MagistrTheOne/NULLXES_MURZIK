@@ -92,6 +92,8 @@ class MurzikTokenizer(PreTrainedTokenizer):
             raise ValueError(f"Cannot save vocabulary, missing {src}")
         import shutil
 
+        if src.resolve() == out.resolve():
+            return (str(out),)
         shutil.copy2(src, out)
         self.vocab_file = str(out)
         return (str(out),)

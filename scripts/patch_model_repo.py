@@ -38,12 +38,9 @@ def main() -> None:
     with cfg_path.open("w", encoding="utf-8") as f:
         json.dump(cfg, f, indent=2)
 
-    dest_model = model_dir / "murzik.model"
-    shutil.copy2(tok_path, dest_model)
-
     from murzik.tokenization_murzik import MurzikTokenizer
 
-    tokenizer = MurzikTokenizer(vocab_file=str(dest_model))
+    tokenizer = MurzikTokenizer(vocab_file=str(tok_path))
     tokenizer.save_pretrained(model_dir)
 
     tok_cfg_path = model_dir / "tokenizer_config.json"
@@ -61,7 +58,7 @@ def main() -> None:
 
     print(f"Patched {model_dir}")
     print(f"  auto_map: module.Class (Transformers 5.x)")
-    print(f"  tokenizer: {dest_model.name} ({tokenizer.vocab_size} pieces)")
+    print(f"  tokenizer: murzik.model ({tokenizer.vocab_size} pieces)")
 
 
 if __name__ == "__main__":

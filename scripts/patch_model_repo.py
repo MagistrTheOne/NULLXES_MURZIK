@@ -49,8 +49,13 @@ def main() -> None:
     tok_cfg.pop("auto_map", None)
     tok_cfg["tokenizer_class"] = "MurzikTokenizer"
     tok_cfg["vocab_file"] = "murzik.model"
+    tok_cfg["use_fast"] = False
     with tok_cfg_path.open("w", encoding="utf-8") as f:
         json.dump(tok_cfg, f, indent=2)
+
+    fast_tok = model_dir / "tokenizer.json"
+    if fast_tok.is_file():
+        fast_tok.unlink()
 
     sample = tokenizer.encode("Murzik multilingual pre-training.", add_special_tokens=False)
     if len(sample) < 2:
